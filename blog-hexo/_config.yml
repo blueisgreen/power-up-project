@@ -3,17 +3,17 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Simply Phun
-subtitle: 'A hobby site for exploring and learning.'
-description: 'This is the home to my many side projects, including Gen IV nuclear education, simulations, and essay writing (a.k.a. blogging). This is my blog.'
-keywords:
+title: Blue is Green
+subtitle: 'Nuclear power is good for the environment.'
+description: 'Exploring clean, safe, sustainable nuclear power. Use this website to learn everything you would every want to know about modern, Gen IV nuclear power. Forget about the scare tactics. Your grandmother does not have a clue about this.'
+keywords: nuclear power, nuclear, environment, global warming, carbon-free, Gen IV nuclear, safe nuclear power
 author: Dave Mount at Simply Phun
 language: en
 timezone: 'America/Los_Angeles'
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://example.com/child' and root as '/child/'
-url: https://www.simplyphun.org
+url: https://www.bluepower.com
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
