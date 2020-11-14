@@ -1,0 +1,4 @@
+---
+title: Personal Philosophy
+tags:
+---
