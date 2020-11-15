@@ -13,7 +13,7 @@ timezone: 'America/Los_Angeles'
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://example.com/child' and root as '/child/'
-url: https://www.bluepower.com
+url: https://www.geniv-nuclear.com
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
@@ -103,4 +103,6 @@ theme: landscape
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
-  type: ''
+  type: heroku
+  repo: https://git.heroku.com/blue-is-green-1.git
+  message: Updates to 
