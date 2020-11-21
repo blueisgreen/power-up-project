@@ -1,6 +1,6 @@
 ---
-title: Satisfying World Energy Needs with Generation IV Nuclear Power
-date: 2020-11-14 16:20:37
+title: What is Gen IV Nuclear?
+date: 2020-11-22 13:00:00
 tags:
 ---
 I want to help the world have access to clean, abundant energy sources.  Solar is great for many situations. My roof is covered with solar panels which produce enough electricity for all of my family's needs.
