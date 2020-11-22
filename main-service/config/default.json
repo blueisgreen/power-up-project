@@ -18,7 +18,7 @@
       "header": {
         "typ": "access"
       },
-      "audience": "https://yourdomain.com",
+      "audience": "https://www.geniv-nuclear.com",
       "issuer": "feathers",
       "algorithm": "HS256",
       "expiresIn": "1d"
@@ -51,6 +51,6 @@
   },
   "postgres": {
     "client": "pg",
-    "connection": "postgres://postgres:@localhost:5432/powerup_service"
+    "connection": "postgres://powerup_owner:openSesame42!!@localhost:5432/powerup_db-dev"
   }
 }
