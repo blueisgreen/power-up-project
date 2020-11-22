@@ -1,12 +1,13 @@
-import logo from './logo.svg';
 import './App.css';
+// import LoginBox from './LoginBox'
+import MemberAdmin from './MemberAdmin'
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>Power Up App</p>
+        <h1>Power Up App</h1>
+        <MemberAdmin />
       </header>
     </div>
   );
