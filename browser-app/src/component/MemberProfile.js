@@ -7,11 +7,12 @@ export default function MemberProfile(params) {
     return <p>No member has been selected.</p>
   } else {
     return (
-      <>
+      <div>
+        <h2>Member Spotlight</h2>
         <p>ID: {member.id}</p>
         <p>Nickname: {member.nickname}</p>
         <p>Email: {member.email}</p>
-      </>
+      </div>
     )
   }
 }

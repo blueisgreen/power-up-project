@@ -7,17 +7,25 @@ import Button from 'react-bootstrap/Button'
 const MemberList = ({ members, onSelect }) => {
   const rows = members.map((member) => (
     <Row key={member.id}>
-      <Col>{member.id}</Col>
-      <Col>{member.screenName}</Col>
-      <Col>{member.email}</Col>
-      <Col>{member.id}</Col>
-      <Col><Button onClick={() => onSelect(member)}>Select</Button></Col>
+      <Col xs={1}>ID: {member.id}</Col>
+      <Col xs={4}>Screen Name: {member.screenName}</Col>
+      <Col xs={5}>Email: {member.email}</Col>
+      <Col xs={2}>
+        <Button
+          variant="outline-info"
+          size="sm"
+          onClick={() => onSelect(member)}
+        >
+          Select
+        </Button>
+      </Col>
     </Row>
   ))
 
   return (
     <Container>
-      <Row>{rows}</Row>
+      <h2>Members</h2>
+      {rows}
     </Container>
   )
 }
