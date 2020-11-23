@@ -1,5 +1,5 @@
 import React from 'react'
-import { NavLink, Route } from 'react-router-dom'
+import { Route } from 'react-router-dom'
 import Container from 'react-bootstrap/Container'
 import Nav from 'react-bootstrap/Nav'
 import HomePage from './component/HomePage'
@@ -8,16 +8,12 @@ import MemberAdminPage from './component/MemberAdminPage'
 const App = () => {
   return (
     <Container>
-      <Nav>
-        <Nav.Link>
-        <NavLink className="item" activeClassName="active" exact to="/">
+      <Nav variant="pills">
+        <Nav.Link href="/">
           Home
-        </NavLink>
         </Nav.Link>
-        <Nav.Link>
-        <NavLink className="item" activeClassName="active" to="/member-admin">
+        <Nav.Link href="/member-admin">
           Member Admin
-        </NavLink>
         </Nav.Link>
       </Nav>
       <Route exact path="/" component={HomePage} />
