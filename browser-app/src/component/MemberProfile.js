@@ -1,8 +1,9 @@
 import React from 'react'
+import _ from 'lodash'
 
 export default function MemberProfile(params) {
   const { member } = params
-  if (!member) {
+  if (_.isEmpty(member)) {
     return <p>No member has been selected.</p>
   } else {
     return (

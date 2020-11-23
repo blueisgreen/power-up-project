@@ -7,5 +7,5 @@ app.configure(restClient.fetch(window.fetch))
 
 const members = app.service('members')
 
-const allMembers = members.find()
-console.log(allMembers)
+const api = { members }
+export default api
