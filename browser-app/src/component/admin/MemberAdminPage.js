@@ -1,9 +1,9 @@
 import React, { useContext, useEffect } from 'react'
-import api from '../api/PowerUpServiceProxy'
+import api from '../../api/PowerUpServiceProxy'
 import Container from 'react-bootstrap/Container'
 import MemberList from './MemberList'
 import MemberDetails from './MemberDetails'
-import { ClientStore } from '../state/ClientStoreProvider'
+import { ClientStore } from '../../state/ClientStoreProvider'
 
 const MemberAdminPage = () => {
   const [state, dispatch] = useContext(ClientStore)

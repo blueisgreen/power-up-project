@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { useForm } from 'react-hook-form'
-import api from '../api/PowerUpServiceProxy'
-import { ClientStore } from '../state/ClientStoreProvider'
+import api from '../../api/PowerUpServiceProxy'
+import { ClientStore } from '../../state/ClientStoreProvider'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 

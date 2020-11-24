@@ -3,7 +3,7 @@ import { Route } from 'react-router-dom'
 import Container from 'react-bootstrap/Container'
 import Nav from 'react-bootstrap/Nav'
 import HomePage from './component/HomePage'
-import MemberAdminPage from './component/MemberAdminPage'
+import MemberAdminPage from './component/admin/MemberAdminPage'
 
 const App = () => {
   return (
