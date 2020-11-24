@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from 'react'
 import api from '../api/PowerUpServiceProxy'
 import Container from 'react-bootstrap/Container'
 import MemberList from './MemberList'
-import MemberProfile from './MemberProfile'
+import MemberDetails from './MemberDetails'
 import { ClientStore } from '../state/ClientStoreProvider'
 
 const MemberAdminPage = () => {
@@ -12,6 +12,7 @@ const MemberAdminPage = () => {
     const fetchData = async () => {
       try {
         const response = await api.members.find()
+        console.log('Found members:', response.data)
         dispatch({
           type: 'FETCH_MEMBERS',
           payload: response.data,
@@ -34,7 +35,8 @@ const MemberAdminPage = () => {
   return (
     <Container>
       <MemberList members={state.members} onSelect={handleSelectMember} />
-      <MemberProfile member={state.member} />
+      <hr/>
+      <MemberDetails member={state.member} />
     </Container>
   )
 }

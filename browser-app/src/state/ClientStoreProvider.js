@@ -38,8 +38,9 @@ function reducer(state, action) {
       return {
         ...state,
         members: state.members.map((item) =>
-          item._id === member._id ? member : item
+          item.id === member.id ? member : item
         ),
+        member,
         message: {
           type: 'success',
           title: 'Update Successful',
