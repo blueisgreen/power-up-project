@@ -1,24 +1,22 @@
 /* eslint-disable no-console */
 
-// members-model.js - A KnexJS
+// codes-model.js - A KnexJS
 //
 // See http://knexjs.org/
 // for more of what you can do here.
 module.exports = function (app) {
   const db = app.get('knexClient')
-  const tableName = 'members'
-
+  const tableName = 'codes'
   db.schema.hasTable(tableName).then((exists) => {
     if (!exists) {
       db.schema
         .createTable(tableName, (table) => {
           table.increments('id')
-          table.string('email').unique()
-          table.string('password')
-          table.string('auth0Id')
-          table.string('googleId')
-          table.string('githubId')
-          table.string('screenName')
+          table.string('publicKey')
+          table.string('displayName')
+          table.integer('parent_id').unsigned()
+          table.foreign('parent_id').references('codes.id')
+          table.unique(['displayName', 'parent_id'])
         })
         .then(() => console.log(`Created ${tableName} table`))
         .catch((e) => console.error(`Error creating ${tableName} table`, e))
