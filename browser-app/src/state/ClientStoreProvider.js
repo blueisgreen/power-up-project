@@ -1,5 +1,4 @@
 import React, { useReducer, createContext } from 'react'
-import _ from 'lodash'
 
 export const ClientStore = createContext()
 
@@ -7,19 +6,15 @@ const initialState = {
   members: [],
   member: {}, // selected or new
   message: {}, // { type: 'success|fail', title:'Info|Error' content:'lorem ipsum'}
-  codes: {}, // { categoryKey: [ {}, {}, {} ]}
+  systemCode: {}, // { categoryKey: [ {}, {}, {} ]}
 }
 
 function reducer(state, action) {
-  const CODE_CATEGORY = '--top--'
   switch (action.type) {
     case 'FETCH_CODES': {
-      const codesByCategory = _.keyBy(action.payload, (value) => {
-        return value.parent_id || CODE_CATEGORY
-      })
       return {
         ...state,
-        codes: codesByCategory
+        systemCode: action.payload
       }
     }
     case 'CREATE_MEMBER': {

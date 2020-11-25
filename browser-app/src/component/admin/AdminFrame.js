@@ -9,18 +9,38 @@ import Nav from 'react-bootstrap/Nav'
 import AdminDashboard from './AdminDashboard'
 import MemberAdminPage from './MemberAdminPage'
 import SystemCodeAdminPage from './SystemCodeAdminPage'
+import _ from 'lodash'
 
 const AdminFrame = () => {
   const [state, dispatch] = useContext(ClientStore)
+
+  const mapCodes = (rawCodes) => {
+    console.log('codes from service', rawCodes)
+    const topLevel = _.filter(rawCodes, (item) => {
+      return !item.parent_id
+    })
+    const top = _.keyBy(topLevel, 'id')
+    const codes = {}
+    _.forEach(rawCodes, (item) => {
+      const category = item.parent_id
+        ? top[item.parent_id].publicKey
+        : 'category'
+      if (!codes[category]) {
+        codes[category] = []
+      }
+      codes[category].push(item)
+    })
+    return codes
+  }
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await api.codes.find()
-        console.log('Found codes:', response.data)
+        const mappedCodes = mapCodes(response.data)
         dispatch({
           type: 'FETCH_CODES',
-          payload: response.data,
+          payload: mappedCodes,
         })
       } catch (err) {
         console.log('something went wrong', err)
