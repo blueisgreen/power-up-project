@@ -15,7 +15,6 @@ const AdminFrame = () => {
   const [state, dispatch] = useContext(ClientStore)
 
   const mapCodes = (rawCodes) => {
-    console.log('codes from service', rawCodes)
     const topLevel = _.filter(rawCodes, (item) => {
       return !item.parent_id
     })
@@ -30,6 +29,7 @@ const AdminFrame = () => {
       }
       codes[category].push(item)
     })
+    console.log('system codes', codes)
     return codes
   }
 
