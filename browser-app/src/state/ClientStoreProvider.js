@@ -6,7 +6,7 @@ const initialState = {
   members: [],
   member: {}, // selected or new
   message: {}, // { type: 'success|fail', title:'Info|Error' content:'lorem ipsum'}
-  systemCode: {}, // { categoryKey: [ {}, {}, {} ]}
+  systemCodes: {}, // { categoryKey: [ {}, {}, {} ] }
 }
 
 function reducer(state, action) {
@@ -14,7 +14,7 @@ function reducer(state, action) {
     case 'FETCH_CODES': {
       return {
         ...state,
-        systemCode: action.payload
+        systemCodes: action.payload
       }
     }
     case 'CREATE_MEMBER': {
