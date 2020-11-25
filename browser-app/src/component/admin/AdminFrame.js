@@ -1,5 +1,7 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 import { Route, Switch, useRouteMatch } from 'react-router-dom'
+import api from '../../api/PowerUpServiceProxy'
+import { ClientStore } from '../../state/ClientStoreProvider'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
@@ -9,6 +11,24 @@ import MemberAdminPage from './MemberAdminPage'
 import SystemCodeAdminPage from './SystemCodeAdminPage'
 
 const AdminFrame = () => {
+  const [state, dispatch] = useContext(ClientStore)
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await api.codes.find()
+        console.log('Found codes:', response.data)
+        dispatch({
+          type: 'FETCH_CODES',
+          payload: response.data,
+        })
+      } catch (err) {
+        console.log('something went wrong', err)
+      }
+    }
+    fetchData()
+  }, [dispatch])
+
   // FIXME use subroutes?
   let { path, url } = useRouteMatch()
 
