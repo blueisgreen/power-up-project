@@ -4,6 +4,7 @@ import api from '../../api/PowerUpServiceProxy'
 import { ClientStore } from '../../state/ClientStoreProvider'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
+import RoleDropdown from './RoleDropdown'
 
 const MemberUpdateForm = () => {
   const [state, dispatch] = useContext(ClientStore)
@@ -48,6 +49,7 @@ const MemberUpdateForm = () => {
           Your alias within the Power Up world.
         </Form.Text>
       </Form.Group>
+      <RoleDropdown />
       <Button variant="primary" type="submit">
         Save
       </Button>

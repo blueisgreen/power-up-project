@@ -25,7 +25,7 @@ const displayCodes = (codes) => {
 }
 
 const SystemCodeAdminPage = () => {
-  const [state, dispatch] = useContext(ClientStore)
+  const state = useContext(ClientStore)
 
   return (
     <div>
