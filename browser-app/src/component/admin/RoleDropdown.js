@@ -11,10 +11,18 @@ const RoleDropdown = () => {
         </option>
       ))
     : []
+  options.unshift(
+    <option key="-" value="-">
+      --Select a role--
+    </option>
+  )
   return (
     <Form.Group controlId="roleSelect">
       <Form.Label>Role</Form.Label>
-      <Form.Control as="select">{options}</Form.Control>
+
+      <Form.Control as="select" size="sm">
+        {options}
+      </Form.Control>
     </Form.Group>
   )
 }

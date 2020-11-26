@@ -37,8 +37,9 @@ const MemberUpdateForm = () => {
         <Form.Control
           name="screenName"
           type="text"
+          size="sm"
           ref={register({ required: true })}
-          placeholder="Enter screen name"
+          placeholder="How others will know it's you"
         />
         <span>
           {errors.screenName &&

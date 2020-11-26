@@ -1,4 +1,5 @@
 import React from 'react'
+import './App.css'
 import { Route, Switch } from 'react-router-dom'
 import Container from 'react-bootstrap/Container'
 import Nav from 'react-bootstrap/Nav'
@@ -7,7 +8,7 @@ import AdminFrame from './component/admin/AdminFrame'
 
 const App = () => {
   return (
-      <Container>
+      <Container className="App">
         <Nav variant="pills">
           <Nav.Link href="/">Home</Nav.Link>
           <Nav.Link href="/admin">System Admin</Nav.Link>
