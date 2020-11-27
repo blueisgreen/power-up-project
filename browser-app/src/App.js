@@ -9,7 +9,7 @@ import AdminFrame from './component/admin/AdminFrame'
 const App = () => {
   return (
       <Container className="App">
-        <Nav variant="pills">
+        <Nav variant="pills" className="top-nav">
           <Nav.Link href="/">Home</Nav.Link>
           <Nav.Link href="/admin">System Admin</Nav.Link>
         </Nav>

@@ -55,7 +55,7 @@ const AdminFrame = () => {
   return (
     <Container>
       <Row>
-        <Col xs={2}>
+        <Col xs={2} className="side-nav">
           <Nav>
             <Nav.Link href={`${url}`}>Dashboard</Nav.Link>
             <Nav.Link href={`${url}/members`}>Member Admin</Nav.Link>
