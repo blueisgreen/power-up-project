@@ -4,6 +4,7 @@ import rest from '@feathersjs/rest-client'
 const app = feathers()
 const restClient = rest('http://localhost:3030')
 app.configure(restClient.fetch(window.fetch))
+
 app.configure(feathers.authentication({
   storage: window.localStorage
 }))
@@ -20,8 +21,10 @@ const login = async () => {
   }
 }
 
-export const members = app.service('members')
-export const codes = app.service('codes')
+const main = async () => {
+  const auth = await login()
+  console.log('User is authenticated', auth)
+  await app.logout()
+}
 
-const api = { members, codes }
-export default api
+main()
