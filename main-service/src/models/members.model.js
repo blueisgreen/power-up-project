@@ -19,6 +19,8 @@ module.exports = function (app) {
           table.string('googleId')
           table.string('githubId')
           table.string('screenName')
+          table.integer('status_id')
+          table.foreign('status_id').references('codes.id')
         })
         .then(() => console.log(`Created ${tableName} table`))
         .catch((e) => console.error(`Error creating ${tableName} table`, e))

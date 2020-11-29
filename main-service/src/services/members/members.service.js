@@ -16,4 +16,16 @@ module.exports = function (app) {
   const service = app.service('members');
 
   service.hooks(hooks);
+
+  app.service('members').hooks({
+    before: {
+      find(context) {
+        const query = context.service.createQuery(context.params)
+        query.orderBy('screenName', 'asc')
+        console.log('query', query)
+        context.params.knex = query
+        return context
+      }
+    }
+  })
 };
