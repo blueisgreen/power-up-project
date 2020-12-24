@@ -1,7 +1,7 @@
 ---
 title: What is Gen IV Nuclear?
 date: 2020-11-22 13:00:00
-tags:
+tags: gen IV nuclear
 ---
 Simply put, Generation IV (Gen IV) nuclear is about the goals for the next generation of clean, safe, sustainable nuclear power production.
 

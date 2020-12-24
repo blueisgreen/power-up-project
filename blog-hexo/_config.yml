@@ -3,11 +3,17 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Blue is Green
-subtitle: 'Nuclear power is good for the environment.'
+title: Sustainable Power Forever
+subtitle: 'Modern nuclear power is safe, clean, and will supply electricity to thousands of generations.'
 description: 'Exploring clean, safe, sustainable nuclear power. Use this website to learn everything you would every want to know about modern, Gen IV nuclear power. Forget about the scare tactics. Your grandmother does not have a clue about this.'
-keywords: nuclear power, nuclear, environment, global warming, carbon-free, Gen IV nuclear, safe nuclear power
-author: Dave Mount at Simply Phun
+keywords:
+  - nuclear power
+  - sustainable energy
+  - safe power generation
+  - stop global warming
+  - carbon-free
+  - Gen IV nuclear
+author: Dave Mount
 language: en
 timezone: 'America/Los_Angeles'
 
@@ -41,7 +47,7 @@ external_link:
   exclude: ''
 filename_case: 0
 render_drafts: false
-post_asset_folder: false
+post_asset_folder: true
 relative_link: false
 future: true
 highlight:
@@ -67,7 +73,7 @@ index_generator:
   order_by: -date
 
 # Category & Tag
-default_category: uncategorized
+default_category: nuclear power
 category_map:
 tag_map:
 
@@ -98,7 +104,7 @@ ignore:
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: hexo-theme-wind
+theme: tranquilpeak
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
