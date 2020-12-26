@@ -13,5 +13,4 @@ Someday the majority of the world's energy production will come from nuclear pow
 
 > GenIV nuclear eats nuclear waste for breakfast.
 
-You will find many claims here. You will also find supporting evidence. Just keep reading, and you will learn everything to need to.
-
+You will find many claims here. You will also find supporting evidence. Just keep reading, and you will learn everything you need to.
