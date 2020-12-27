@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="demo">
     <h2>Demo of Components for Power Up</h2>
     <form>
       <label for="screenName">Screen Name</label>
