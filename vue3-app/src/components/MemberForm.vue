@@ -51,8 +51,8 @@
     </div>
   </form>
   <div>
-    <pre>
-{{ JSON.stringify($data.member, null, 2) }}
+    <pre
+      >{{ JSON.stringify($data.member, null, 2) }}
     </pre>
   </div>
 </template>
@@ -62,6 +62,14 @@ export default {
   data: function() {
     return {
       reactorTypes: ['VHTR', 'GFR', 'SFR', 'LFR', 'MSR', 'SCWR'],
+      reactorTypesAdvanced: [
+        { display: 'Very High Temperature Reactor', value: 'VHTR' },
+        { display: 'Gas-cooled Fast Reactor', value: 'GFR' },
+        { display: 'Sodium-cooled Fast Reactor', value: 'SFR' },
+        { display: 'Lead-cooled Fast Reactor', value: 'LFR' },
+        { display: 'Molten Salt Reactor', value: 'MSR' },
+        { display: 'Super Critical Water Reactor', value: 'SCWR' }
+      ],
       colors: ['red', 'blue', 'green', 'yellow'],
       member: {
         screenName: 'Zanzibar',

@@ -1,20 +1,31 @@
 <template>
   <div class="demo">
-    <h1 style="text-align:center">Demo of Components for Power Up!</h1>
-    <MemberForm />
+    <h1 style="text-align:center">Component Demo</h1>
+    <form>
+      <BaseInput label="label" v-model="inputValue" />
+      <BaseSelect
+        label="select"
+        v-model="selectValue"
+        :options="reactorTypes"
+      />
+      <BaseCheckbox label="checkbox" v-model="isAwesome" />
+      <p class="label-style">radio</p>
+      <BaseRadio label="98.5" v-model="station" value="98.5" />
+      <BaseRadio label="101.7" v-model="station" value="101.7" />
+    </form>
+    <pre>{{ JSON.stringify($data, null, 2) }}</pre>
   </div>
 </template>
 
 <script>
-import MemberForm from '../components/MemberForm'
-
 export default {
-  components: {
-    MemberForm
-  },
   data: function() {
     return {
-      reactorTypes: ['VHTR', 'GFR', 'SFR', 'LFR', 'MSR', 'SCWR']
+      reactorTypes: ['A', 'B', 'C', 'D'],
+      inputValue: 'input',
+      selectValue: '',
+      isAwesome: false,
+      station: '98.5'
     }
   }
 }
@@ -22,6 +33,10 @@ export default {
 
 <style>
 label {
+  margin-right: 1em;
+  font-weight: bold;
+}
+.label-style {
   margin-right: 1em;
   font-weight: bold;
 }
