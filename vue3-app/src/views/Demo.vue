@@ -1,8 +1,8 @@
 <template>
   <div class="demo">
-    <h2>Demo of Components for Power Up!</h2>
+    <h1 style="text-align:center">Demo of Components for Power Up!</h1>
     <form>
-      <h3>Member Info</h3>
+      <h2>Member Info</h2>
       <BaseInput v-model="member.screenName" label="Screen Name" type="text" />
       <BaseInput v-model="member.email" label="Email" type="text" size="60" />
       <BaseSelect
