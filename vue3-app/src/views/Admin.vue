@@ -1,6 +1,6 @@
 <template>
   <div class="admin">
-    <h1 style="text-align:center">Member Administration</h1>
+    <h1 style="text-align:center">Administration</h1>
     <h2>{{ message }}</h2>
   </div>
 </template>

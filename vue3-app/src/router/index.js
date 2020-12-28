@@ -21,6 +21,12 @@ const routes = [
     component: Admin
   },
   {
+    path: '/admin/member/:id',
+    name: 'MemberAdmin',
+    component: Admin,
+    props: true
+  },
+  {
     path: '/demo',
     name: 'Demo',
     component: Demo
