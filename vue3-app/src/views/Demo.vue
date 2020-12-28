@@ -12,6 +12,7 @@
       <p class="label-style">radio</p>
       <BaseRadio label="98.5" v-model="station" value="98.5" />
       <BaseRadio label="101.7" v-model="station" value="101.7" />
+      <md-button class="md-raised md-primary">Primary</md-button>
     </form>
     <pre>{{ JSON.stringify($data, null, 2) }}</pre>
   </div>
