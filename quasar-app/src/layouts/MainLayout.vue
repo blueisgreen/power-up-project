@@ -12,10 +12,10 @@
         />
 
         <q-toolbar-title>
-          Quasar App
+          Power Up
         </q-toolbar-title>
 
-        <div>Quasar v{{ $q.version }}</div>
+        <div>Power Up alpha</div>
       </q-toolbar>
     </q-header>
 
