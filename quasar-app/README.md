@@ -1,6 +1,6 @@
-# Power Up (quasar-app)
+# Power Up on Quasar (power-up-app-quasar)
 
-Power Up application for exploring the future of nuclear power.
+Power Up app for discovering Gen IV nuclear.
 
 ## Install the dependencies
 ```bash

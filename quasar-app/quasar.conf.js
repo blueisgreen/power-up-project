@@ -116,9 +116,9 @@ cfg.module.rules.push({
       workboxPluginMode: 'GenerateSW', // 'GenerateSW' or 'InjectManifest'
       workboxOptions: {}, // only for GenerateSW
       manifest: {
-        name: `Power Up`,
-        short_name: `Power Up`,
-        description: `Power Up application for exploring the future of nuclear power.`,
+        name: `Power Up on Quasar`,
+        short_name: `Power Up on Quasar`,
+        description: `Power Up app for discovering Gen IV nuclear.`,
         display: 'standalone',
         orientation: 'portrait',
         background_color: '#ffffff',
@@ -183,7 +183,7 @@ cfg.module.rules.push({
       builder: {
         // https://www.electron.build/configuration/configuration
 
-        appId: 'quasar-app'
+        appId: 'power-up-app-quasar'
       },
 
       // More info: https://quasar.dev/quasar-cli/developing-electron-apps/node-integration

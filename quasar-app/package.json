@@ -1,8 +1,8 @@
 {
-  "name": "quasar-app",
+  "name": "power-up-app-quasar",
   "version": "0.0.1",
-  "description": "Power Up application for exploring the future of nuclear power.",
-  "productName": "Power Up",
+  "description": "Power Up app for discovering Gen IV nuclear.",
+  "productName": "Power Up on Quasar",
   "author": "Dave Mount <davemount@gmail.com>",
   "private": true,
   "scripts": {

@@ -4,6 +4,8 @@ module.exports = {
     "vetur.experimental.templateInterpolationService": true
   },
   projects: [
-    './vue3-app'
+    './vue3-app',
+    './ionic-app',
+    './quasar-app'
   ]
 }
