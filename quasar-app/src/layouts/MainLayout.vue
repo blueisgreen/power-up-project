@@ -26,10 +26,12 @@
       content-class="bg-grey-1"
     >
       <q-list>
-        <q-item-label
-          header
-          class="text-grey-8"
-        >
+        <q-item-label header class="text-grey-8">
+          <img
+            alt="Power Up logo"
+            src="~assets/PowerUp-icon-dark-512x512.svg"
+            width="64"
+          />
           Power Up
         </q-item-label>
         <EssentialLink
@@ -40,76 +42,44 @@
       </q-list>
     </q-drawer>
 
-    <q-page-container class="bah">
+    <q-page-container>
       <router-view />
     </q-page-container>
   </q-layout>
 </template>
 
 <script>
-import EssentialLink from 'components/EssentialLink.vue'
+import EssentialLink from "components/EssentialLink.vue";
 
 const linksData = [
   {
-    title: 'Docs',
-    caption: 'quasar.dev',
-    icon: 'school',
-    link: 'https://quasar.dev'
+    title: "Home",
+    caption: "Home Page",
+    icon: "home",
+    link: "/"
   },
   {
-    title: 'Github',
-    caption: 'github.com/quasarframework',
-    icon: 'code',
-    link: 'https://github.com/quasarframework'
+    title: "Profile",
+    caption: "Your member profile (login required)",
+    icon: "person",
+    link: "/profile"
   },
   {
-    title: 'Discord Chat Channel',
-    caption: 'chat.quasar.dev',
-    icon: 'chat',
-    link: 'https://chat.quasar.dev'
-  },
-  {
-    title: 'Forum',
-    caption: 'forum.quasar.dev',
-    icon: 'record_voice_over',
-    link: 'https://forum.quasar.dev'
-  },
-  {
-    title: 'Twitter',
-    caption: '@quasarframework',
-    icon: 'rss_feed',
-    link: 'https://twitter.quasar.dev'
-  },
-  {
-    title: 'Facebook',
-    caption: '@QuasarFramework',
-    icon: 'public',
-    link: 'https://facebook.quasar.dev'
-  },
-  {
-    title: 'Quasar Awesome',
-    caption: 'Community Quasar projects',
-    icon: 'favorite',
-    link: 'https://awesome.quasar.dev'
+    title: "Admin",
+    caption: "(authorized access only)",
+    icon: "lock",
+    link: "/admin/members"
   }
 ];
 
 export default {
-  name: 'MainLayout',
+  name: "MainLayout",
   components: { EssentialLink },
-  data () {
+  data() {
     return {
       leftDrawerOpen: false,
       essentialLinks: linksData
-    }
+    };
   }
-}
+};
 </script>
-
-<!-- FIXME not sure why this doesn't work -->
-<style scoped>
-.bah {
-  margin-top: 2em;
-  background-color: #000000;
-}
-</style>
