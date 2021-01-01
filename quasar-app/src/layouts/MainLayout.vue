@@ -30,7 +30,7 @@
           header
           class="text-grey-8"
         >
-          Essential Links
+          Power Up
         </q-item-label>
         <EssentialLink
           v-for="link in essentialLinks"
@@ -40,7 +40,7 @@
       </q-list>
     </q-drawer>
 
-    <q-page-container>
+    <q-page-container class="bah">
       <router-view />
     </q-page-container>
   </q-layout>
@@ -105,3 +105,11 @@ export default {
   }
 }
 </script>
+
+<!-- FIXME not sure why this doesn't work -->
+<style scoped>
+.bah {
+  margin-top: 2em;
+  background-color: #000000;
+}
+</style>

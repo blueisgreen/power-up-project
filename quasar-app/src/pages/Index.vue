@@ -2,7 +2,7 @@
   <q-page class="flex flex-center">
     <img
       alt="Quasar logo"
-      src="~assets/PowerUp-icon-512x512.svg"
+      src="~assets/PowerUp-logo-clear-512x512.svg"
     >
   </q-page>
 </template>
