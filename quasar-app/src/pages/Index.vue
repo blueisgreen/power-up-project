@@ -2,7 +2,7 @@
   <q-page class="flex flex-center">
     <img
       alt="Power Up logo"
-      src="~assets/PowerUp-icon-dark-512x512.svg"
+      src="~assets/logo-clear.svg"
       width="512"
     >
   </q-page>

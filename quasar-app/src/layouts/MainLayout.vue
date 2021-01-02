@@ -29,7 +29,7 @@
         <q-item-label header class="text-grey-8">
           <img
             alt="Power Up logo"
-            src="~assets/PowerUp-icon-dark-512x512.svg"
+            src="~assets/logo-clear.svg"
             width="64"
           />
           Power Up
@@ -65,9 +65,9 @@ const linksData = [
     link: "/profile"
   },
   {
-    title: "Admin",
-    caption: "(authorized access only)",
-    icon: "lock",
+    title: "Administration",
+    caption: "Manage members and controls",
+    icon: "admin_panel_settings",
     link: "/admin/members"
   }
 ];
