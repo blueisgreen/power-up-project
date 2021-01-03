@@ -2,6 +2,9 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 
 // import example from './module-example'
+import admin from './admin'
+import member from './member'
+import user from './user'
 
 Vue.use(Vuex)
 
@@ -14,16 +17,26 @@ Vue.use(Vuex)
  * with the Store instance.
  */
 
-export default function (/* { ssrContext } */) {
+export default function(/* { ssrContext } */) {
   const Store = new Vuex.Store({
     modules: {
-      // example
+      admin,
+      member,
+      user,
     },
 
     // enable strict mode (adds overhead!)
     // for dev mode only
-    strict: process.env.DEBUGGING
+    strict: process.env.DEV,
   })
+
+  // for hot module reloading (HMR) -- keep out of production build
+  // if (process.env.DEV && module.hot) {
+  //   module.hot.accept(['./admin'], () => {
+  //     const newAdmin = require('./admin').default
+  //     Store.hotUpdate({ modules: { admin: newAdmin } })
+  //   })
+  // }
 
   return Store
 }
