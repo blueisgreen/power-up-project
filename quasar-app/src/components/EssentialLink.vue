@@ -1,10 +1,5 @@
 <template>
-  <q-item
-    clickable
-    tag="a"
-    target="_self"
-    :href="link"
-  >
+  <q-item :to="link" exact>
     <q-item-section
       v-if="icon"
       avatar
@@ -37,7 +32,7 @@ export default {
 
     link: {
       type: String,
-      default: '#'
+      default: '/'
     },
 
     icon: {

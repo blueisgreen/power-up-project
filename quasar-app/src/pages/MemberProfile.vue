@@ -1,6 +1,6 @@
 <template>
   <q-page class="flex flex-center">
-    <div><h1>Your Member Profile</h1>
+    <div><h1>Your Profile</h1>
     <ul>
       <li>UUID</li>
       <li>Real Name</li>
