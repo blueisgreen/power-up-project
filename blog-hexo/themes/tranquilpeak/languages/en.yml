@@ -2,14 +2,16 @@
 date_format: "MMM DD, YYYY"
 
 global:
-    home: "Home"
+    welcome: "Power Up"
+    home: "Articles"
+    terms: "Terms of Use"
     categories: "Categories"
     category: "Category"
     tags: "Tags"
     tag: "Tag"
     archives: "Archives"
     search: "Search"
-    about: "About"
+    about: "About the Publisher"
     author_picture: "Author's picture"
     github: "GitHub"
     stack_overflow: "Stack Overflow"
@@ -81,6 +83,6 @@ post:
 
 author:
     # Your biography (Markdown and HTML supported)
-    bio: "Degreed in applied and engineering physics. Opinionated about nuclear technology. Eager to share the light."
+    bio: "Majored in applied and engineering physics. Opinionated about nuclear technology. Eager to share the light."
     # Your job
     job: "Software Executive"
