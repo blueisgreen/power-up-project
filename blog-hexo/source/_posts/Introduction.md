@@ -5,7 +5,7 @@ tags:
   - nuclear power
   - gen IV nuclear
 ---
-## Why should I read this?
+## Why read this?
 
 You can learn all about Generation IV (Gen IV) nuclear power, the cleanest, safest nuclear power source for all of your electricity needs. This is not your grandmother's nuclear, so don't let her scare you. Instead, up your nuclear IQ by reading everything posted here.
 
