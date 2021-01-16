@@ -9,6 +9,15 @@ const routes = [
       { path: 'admin/members', component: () => import('pages/AdminMembers.vue') },
     ]
   },
+  {
+    path: '/alt',
+    component: () => import('layouts/AltMainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/Index.vue') },
+      { path: 'profile', component: () => import('pages/MemberProfile.vue') },
+      { path: 'admin/members', component: () => import('pages/AdminMembers.vue') },
+    ]
+  },
 
   // Always leave this as last one,
   // but you can also remove it

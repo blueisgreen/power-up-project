@@ -1,26 +1,53 @@
 <template>
-  <q-layout view="hHh lpR fFf">
-    <q-header elevated class="bg-primary text-white" height-hint="98">
+  <q-layout view="hHh lpR fff">
+    <q-header elevated class="bg-light-blue-12 text-white" height-hint="98">
       <q-toolbar>
-        <q-btn dense flat round icon="menu" @click="left = !left" />
-
         <q-toolbar-title>
-          <q-avatar>
-            <img src="https://cdn.quasar.dev/logo/svg/quasar-logo.svg" />
+          <q-avatar square color="gray">
+            <img src="~assets/logo-dark.svg" />
           </q-avatar>
-          Title
+          Power Up
         </q-toolbar-title>
-      </q-toolbar>
 
-      <q-tabs align="left">
-        <q-route-tab to="/page1" label="Page One" />
-        <q-route-tab to="/page2" label="Page Two" />
-        <q-route-tab to="/page3" label="Page Three" />
+        <div class="q-pr-lg">
+          <img src="~assets/logo-dark.svg" />
+        </div>
+
+        <q-space />
+
+        <div class="q-pl-md q-gutter-sm row no-wrap items-center">
+          <q-btn round flat>
+            <q-avatar size="42px">
+              <img src="~assets/logo-dark.svg" />
+            </q-avatar>
+          </q-btn>
+        </div>
+      </q-toolbar>
+      <q-tabs>
+        <q-route-tab icon="home" to="/alt" exact label="Guide" />
+        <q-route-tab icon="person" to="/alt/profile" label="Profile" />
+        <q-route-tab
+          icon="admin_panel_settings"
+          to="/alt/admin/members"
+          label="Admin"
+        />
       </q-tabs>
     </q-header>
 
-    <q-drawer show-if-above v-model="left" side="left" bordered>
-      <!-- drawer content -->
+    <q-drawer
+      v-model="rightDrawerOpen"
+      show-if-above
+      side="right"
+      bordered
+      content-class="bg-amber-3"
+    >
+      <q-scroll-area class="fit">
+        <div class="q-pa-sm">
+          <h4>Hello</h4>
+          <div v-for="n in 50" :key="n">Put something interesting here.</div>
+        </div>
+        <img alt="Power Up logo" src="~assets/logo-clear.svg" width="64" />
+      </q-scroll-area>
     </q-drawer>
 
     <q-page-container>
@@ -30,10 +57,10 @@
     <q-footer elevated class="bg-grey-8 text-white">
       <q-toolbar>
         <q-toolbar-title>
-          <q-avatar>
-            <img src="https://cdn.quasar.dev/logo/svg/quasar-logo.svg" />
+          <q-avatar square color="gray">
+            <img src="~assets/logo-dark.svg" />
           </q-avatar>
-          Title
+          Power Up
         </q-toolbar-title>
       </q-toolbar>
     </q-footer>
@@ -44,7 +71,8 @@
 export default {
   data() {
     return {
-      left: false,
+      leftDrawerOpen: false,
+      rightDrawerOpen: true,
     }
   },
 }

@@ -26,7 +26,7 @@
         label="Your name"
       />
 
-      <q-toggle v-model="acceptTerms" label="I accept the license and terms" />
+      <q-toggle v-model="acceptTerms" label="I accept the terms of use" />
       <a href="https://blue-is-green-1.herokuapp.com/Terms-of-Use/" target="_blank">See Terms of Use.</a>
 
       <div>
