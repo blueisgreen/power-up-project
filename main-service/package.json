@@ -37,28 +37,28 @@
     "ignore": []
   },
   "dependencies": {
-    "@feathersjs/authentication": "^4.5.10",
-    "@feathersjs/authentication-local": "^4.5.10",
-    "@feathersjs/authentication-oauth": "^4.5.10",
-    "@feathersjs/configuration": "^4.5.10",
-    "@feathersjs/errors": "^4.5.10",
-    "@feathersjs/express": "^4.5.10",
-    "@feathersjs/feathers": "^4.5.10",
-    "@feathersjs/socketio": "^4.5.10",
-    "@feathersjs/transport-commons": "^4.5.10",
+    "@feathersjs/authentication": "^4.5.11",
+    "@feathersjs/authentication-local": "^4.5.11",
+    "@feathersjs/authentication-oauth": "^4.5.11",
+    "@feathersjs/configuration": "^4.5.11",
+    "@feathersjs/errors": "^4.5.11",
+    "@feathersjs/express": "^4.5.11",
+    "@feathersjs/feathers": "^4.5.11",
+    "@feathersjs/socketio": "^4.5.11",
+    "@feathersjs/transport-commons": "^4.5.11",
     "compression": "^1.7.4",
     "cors": "^2.8.5",
     "feathers-knex": "^7.1.1",
-    "helmet": "^4.2.0",
-    "knex": "^0.21.12",
+    "helmet": "^4.4.1",
+    "knex": "^0.21.16",
     "pg": "^8.5.1",
     "serve-favicon": "^2.5.0",
     "winston": "^3.3.3"
   },
   "devDependencies": {
-    "axios": "^0.21.0",
-    "eslint": "^7.14.0",
+    "axios": "^0.21.1",
+    "eslint": "^7.18.0",
     "mocha": "^8.2.1",
-    "nodemon": "^2.0.6"
+    "nodemon": "^2.0.7"
   }
 }
