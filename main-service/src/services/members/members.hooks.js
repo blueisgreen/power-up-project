@@ -1,27 +1,18 @@
 const { authenticate } = require('@feathersjs/authentication').hooks;
+const { setTimestamp } = require('../../hooks/hook-functions')
 
 const {
   protect, hashPassword
 } = require('@feathersjs/authentication-local').hooks;
 
 module.exports = {
-  // FIXME resecure methods
-  // before: {
-  //   all: [],
-  //   find: [],
-  //   get: [],
-  //   create: [],
-  //   update: [],
-  //   patch: [],
-  //   remove: []
-  // },
   before: {
     all: [],
     find: [ authenticate('jwt') ],
     get: [ authenticate('jwt') ],
-    create: [ hashPassword('password') ],
-    update: [ hashPassword('password'),  authenticate('jwt') ],
-    patch: [ hashPassword('password'),  authenticate('jwt') ],
+    create: [ hashPassword('password'), setTimestamp('joinedOn') ],
+    update: [ hashPassword('password'), authenticate('jwt') ],
+    patch: [ hashPassword('password'), authenticate('jwt') ],
     remove: [ authenticate('jwt') ]
   },
 

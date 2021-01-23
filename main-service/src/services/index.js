@@ -4,6 +4,8 @@ const lessons = require('./lessons/lessons.service.js');
 const passages = require('./passages/passages.service.js');
 const courses = require('./courses/courses.service.js');
 const feedback = require('./feedback/feedback.service.js');
+const users = require('./users/users.service.js');
+const profiles = require('./profiles/profiles.service.js');
 // eslint-disable-next-line no-unused-vars
 module.exports = function (app) {
   app.configure(members);
@@ -12,4 +14,6 @@ module.exports = function (app) {
   app.configure(passages);
   app.configure(courses);
   app.configure(feedback);
+  app.configure(users);
+  app.configure(profiles);
 };
