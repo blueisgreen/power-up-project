@@ -4,82 +4,41 @@
     <title>Power Up Service, lifted by Feathers</title>
     <meta name="description" content="Power Up Service, lifted by Feathers" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-
-      html,
-      body {
-        font-family: 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif';
-        font-weight: 400;
-        font-size: 16px;
-        color: #2c3e50;
-      }
-
-      .center-text {
-        text-align: center;
-      }
-
-      main {
-        margin-top: 50px;
-        padding: 20px;
-      }
-
-      img.logo {
-        display: block;
-        margin: 0 auto;
-        max-width: 100%;
-        margin-bottom: 30px;
-      }
-
-      h2 {
-        font-size: 2em;
-        font-weight: 100;
-      }
-
-      header {
-        margin: 0 0 0 0;
-      }
-
-      footer {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        padding: 20px;
-      }
-
-      footer p {
-        font-weight: 300;
-        font-size: 1em;
-      }
-
-      a {
-        color: #3cf;
-        text-decoration: none;
-      }
-
-      a:hover,
-      a:focus {
-        color: #3cf;
-      }
-    </style>
+    <link rel="stylesheet" href="base.css" />
   </head>
   <body>
     <main class="container center-text">
       <header>
         <h1>Power Up Service</h1>
-        <hr/>
+        <hr />
       </header>
-      <div>
-        <p>This is the backing service for the Power Up interactive magazine.</p>
+      <div class="splash">
+        This is the backing service for the Power Up, an interactive magazine
+        dedicated to explaining nuclear power.
+      </div>
+      <div class="block">
+        <form class="form" onsubmit="sendMessage(event.preventDefault())">
+          <input
+            type="text"
+            id="message-text"
+            placeholder="Enter message here"
+          />
+          <button type="submit" class="button button-primary">
+            Send message
+          </button>
+        </form>
+        <div>
+          <h3>Messages</h3>
+          <p>Blah</p>
+          <p>Blah</p>
+          <p>Blah</p>
+        </div>
       </div>
       <footer>
         <p class="center-text">&copy; 2021 Happy Spirit Publishing</p>
       </footer>
     </main>
+    <script src="//unpkg.com/@feathersjs/client@^4.3.0/dist/feathers.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
   </body>
 </html>

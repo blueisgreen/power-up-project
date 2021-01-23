@@ -7,6 +7,7 @@
 module.exports = function (app) {
   const db = app.get('knexClient')
   const tableName = 'codes'
+  
   db.schema.hasTable(tableName).then((exists) => {
     if (!exists) {
       db.schema
