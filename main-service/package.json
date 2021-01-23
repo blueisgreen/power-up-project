@@ -1,7 +1,7 @@
 {
   "name": "powerup-service",
   "description": "Backing service that powers Power Up system.",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "homepage": "",
   "private": true,
   "main": "src",
@@ -9,7 +9,7 @@
     "feathers"
   ],
   "author": {
-    "name": "Dave Mount",
+    "name": "Happy Spirit Publishing",
     "email": "davemount@gmail.com"
   },
   "contributors": [],
