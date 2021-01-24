@@ -12,16 +12,8 @@
         <div class="q-pr-lg">
           <img src="~assets/logo-dark.svg" />
         </div>
-
         <q-space />
-
-        <div class="q-pl-md q-gutter-sm row no-wrap items-center">
-          <q-btn round flat>
-            <q-avatar size="42px">
-              <img src="~assets/logo-dark.svg" />
-            </q-avatar>
-          </q-btn>
-        </div>
+        <member-toolbar-buttons />
       </q-toolbar>
       <q-tabs>
         <q-route-tab icon="home" to="/alt" exact label="Guide" />
@@ -43,8 +35,10 @@
     >
       <q-scroll-area class="fit">
         <div class="q-pa-sm">
-          <h4>Hello</h4>
-          <div v-for="n in 50" :key="n">Put something interesting here.</div>
+          <h4>Sidebar</h4>
+          <div v-for="n in 10" :key="n">
+            Put something interesting here based on the main context.
+          </div>
         </div>
         <img alt="Power Up logo" src="~assets/logo-clear.svg" width="64" />
       </q-scroll-area>
@@ -68,7 +62,11 @@
 </template>
 
 <script>
+import MemberToolbarButtons from 'components/MemberToolbarButtons.vue'
+
 export default {
+  name: 'AltMainLayout',
+  components: { MemberToolbarButtons },
   data() {
     return {
       leftDrawerOpen: false,

@@ -1,5 +1,4 @@
 <template>
-
   <q-layout view="lHh Lpr lFf">
     <q-header elevated>
       <q-toolbar>
@@ -16,7 +15,7 @@
           Power Up
         </q-toolbar-title>
 
-        <div>Power Up alpha</div>
+        <member-toolbar-buttons />
       </q-toolbar>
     </q-header>
 
@@ -28,11 +27,7 @@
     >
       <q-list>
         <q-item-label header class="text-grey-8">
-          <img
-            alt="Power Up logo"
-            src="~assets/logo-clear.svg"
-            width="64"
-          />
+          <img alt="Power Up logo" src="~assets/logo-clear.svg" width="64" />
           Power Up
         </q-item-label>
         <EssentialLink
@@ -50,37 +45,38 @@
 </template>
 
 <script>
-import EssentialLink from "components/EssentialLink.vue";
+import EssentialLink from 'components/EssentialLink.vue'
+import MemberToolbarButtons from 'components/MemberToolbarButtons.vue'
 
 const linksData = [
   {
-    title: "Home",
-    caption: "Home Page",
-    icon: "home",
-    link: "/"
+    title: 'Home',
+    caption: 'Home Page',
+    icon: 'home',
+    link: '/',
   },
   {
-    title: "Profile",
-    caption: "Your member profile (login required)",
-    icon: "person",
-    link: "/profile"
+    title: 'Profile',
+    caption: 'Your member profile (login required)',
+    icon: 'person',
+    link: '/profile',
   },
   {
-    title: "Administration",
-    caption: "Manage members and controls",
-    icon: "admin_panel_settings",
-    link: "/admin/members"
-  }
-];
+    title: 'Administration',
+    caption: 'Manage members and controls',
+    icon: 'admin_panel_settings',
+    link: '/admin/members',
+  },
+]
 
 export default {
-  name: "MainLayout",
-  components: { EssentialLink },
+  name: 'MainLayout',
+  components: { EssentialLink, MemberToolbarButtons },
   data() {
     return {
       leftDrawerOpen: false,
-      essentialLinks: linksData
-    };
-  }
-};
+      essentialLinks: linksData,
+    }
+  },
+}
 </script>
