@@ -1,23 +1,26 @@
 <template>
-    <q-btn
-      color="primary"
-      :icon="isLoggedIn ? 'clear' : 'login'"
-      :label="isLoggedIn ? 'Sign Out' : 'Sign In / Join'"
-      @click="handleClick"
-    />
+  <q-btn
+    color="primary"
+    :icon="isLoggedIn ? 'clear' : 'login'"
+    :label="isLoggedIn ? 'Sign Out' : 'Sign In / Join'"
+    @click="handleClick"
+  />
 </template>
 
 <script>
 export default {
   props: {
     isLoggedIn: Boolean,
-    handleClick: Function,
+    handleClick: {
+      type: Function,
+      default: () => {},
+    },
   },
   data: () => {
     return {
-      labelText: isLoggedIn ? 'Sign In / Join' : 'Sign Out'
+      labelText: isLoggedIn ? 'Sign In / Join' : 'Sign Out',
     }
-  }
+  },
 }
 </script>
 

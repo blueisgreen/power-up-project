@@ -1,7 +1,7 @@
 <template>
   <div class="q-pa-md q-gutter-sm">
     <account-access-button :is-logged-in="loggedIn" />
-    <signin-join-button :is-logged-in="loggedIn" :handleClick="toggleLoggedIn" />
+    <signin-join-button :is-logged-in="loggedIn" :handle-click="toggleLoggedIn" />
   </div>
 </template>
 
