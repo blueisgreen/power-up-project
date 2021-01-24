@@ -14,7 +14,10 @@ module.exports = function (app) {
         .createTable(tableName, (table) => {
           table.increments('id')
           table.string('email').unique()
+          table.string('name').unique()
+          table.string('avatar').unique()
           table.string('password')
+          table.string('screenName')
           table.string('auth0Id')
           table.string('googleId')
           table.string('githubId')

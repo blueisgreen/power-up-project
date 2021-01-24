@@ -17,15 +17,10 @@
         dedicated to explaining nuclear power.
       </div>
       <div class="block">
-        <form class="form" onsubmit="sendMessage(event.preventDefault())">
-          <input
-            type="text"
-            id="message-text"
-            placeholder="Enter message here"
-          />
-          <button type="submit" class="button button-primary">
-            Send message
-          </button>
+        <form class="form">
+          <a class="button button-primary block" href="/oauth/github">
+            Login with GitHub
+          </a>
         </form>
         <div>
           <h3>Messages</h3>
@@ -40,5 +35,6 @@
     </main>
     <script src="//unpkg.com/@feathersjs/client@^4.3.0/dist/feathers.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
+    <script src="client.js"></script>
   </body>
 </html>

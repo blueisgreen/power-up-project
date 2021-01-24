@@ -5,7 +5,7 @@ const { expressOauth, OAuthStrategy } = require('@feathersjs/authentication-oaut
 class GitHubStrategy extends OAuthStrategy {
   async getEntityData(profile) {
     const baseData = await super.getEntityData(profile)
-
+    console.log('from GitHub', baseData)
     return {
       ...baseData,
       name: profile.login,
