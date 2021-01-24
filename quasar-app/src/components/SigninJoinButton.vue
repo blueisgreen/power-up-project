@@ -1,12 +1,23 @@
 <template>
-  <div v-if="isVisible" class="q-pa-md q-gutter-sm">
-    <q-btn color="primary" icon="login" label="Sign In / Join" />
-  </div>
+    <q-btn
+      color="primary"
+      :icon="isLoggedIn ? 'clear' : 'login'"
+      :label="isLoggedIn ? 'Sign Out' : 'Sign In / Join'"
+      @click="handleClick"
+    />
 </template>
 
 <script>
 export default {
-  props: { isVisible: Boolean }
+  props: {
+    isLoggedIn: Boolean,
+    handleClick: Function,
+  },
+  data: () => {
+    return {
+      labelText: isLoggedIn ? 'Sign In / Join' : 'Sign Out'
+    }
+  }
 }
 </script>
 

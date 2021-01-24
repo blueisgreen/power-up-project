@@ -1,10 +1,8 @@
 <template>
-  <div v-if="isLoggedIn" class="q-pa-md q-gutter-md">
-    <q-btn color="teal" :to="{ name: 'memberProfile' }">
-      <q-icon left size="3em" name="account_circle" />
+    <q-btn v-if="isLoggedIn" color="teal" :to="{ name: 'memberProfile' }">
+      <q-icon left name="account_circle" />
       <div>Account</div>
     </q-btn>
-  </div>
 </template>
 
 <script>

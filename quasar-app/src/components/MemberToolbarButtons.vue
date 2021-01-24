@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <div class="q-pa-md q-gutter-sm">
     <account-access-button :is-logged-in="loggedIn" />
-    <signin-join-button :is-visible="!loggedIn" @click="toggleLoggedIn" />
+    <signin-join-button :is-logged-in="loggedIn" :handleClick="toggleLoggedIn" />
   </div>
 </template>
 
@@ -14,7 +14,7 @@ export default {
   components: { SigninJoinButton, AccountAccessButton },
   data() {
     return {
-      loggedIn: true
+      loggedIn: false
     }
   },
   methods: {
