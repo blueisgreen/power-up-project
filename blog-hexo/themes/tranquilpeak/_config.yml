@@ -62,7 +62,7 @@ sidebar:
         #     class: open-algolia-search
         about:
             title: global.about
-            url: "#about"
+            url: "https://www.happyspiritpublishing.com/"
             icon: fa fa-question
     author_links:
         twitter:
