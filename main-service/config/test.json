@@ -1,1 +1,6 @@
-{}
+{
+  "postgres": {
+    "client": "pg",
+    "connection": "postgres://powerup_owner:openSesame42!!@localhost:5432/powerup_db-test"
+  }
+}
