@@ -1,8 +1,9 @@
 <template>
   <q-page class="flex flex-center">
     <img
-      alt="Quasar logo"
-      src="~assets/quasar-logo-full.svg"
+      alt="Power Up logo"
+      src="~assets/logo-clear.svg"
+      width="500"
     >
   </q-page>
 </template>

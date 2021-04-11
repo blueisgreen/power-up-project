@@ -4,6 +4,7 @@
   "description": "A great way to learn about nuclear power, the cleanest, most reliable source of energy.",
   "productName": "Power Up Interactive Magazine",
   "author": "Happy Spirit Publishing",
+  "license": "MIT",
   "private": true,
   "scripts": {
     "lint": "eslint --ext .js,.vue ./",
