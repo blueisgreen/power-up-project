@@ -5,11 +5,19 @@
 
     <div class="q-pa-md">
       <div class="q-gutter-md" style="max-width: 300px">
-        <q-form> <q-input outlined v-model="lessonTitle" label="Title" /></q-form>
-        <q-select outlined v-model="activePart" :options="listParts" label="Lesson Parts" />
+        <q-form>
+          <q-input outlined v-model="lessonTitle" label="Title" />
+          <q-select
+            outlined
+            v-model="activePart"
+            :options="listParts"
+            label="Lesson Parts"
+          />
+        </q-form>
       </div>
     </div>
 
+    <!-- html lesson part -->
     <div class="q-pa-md q-gutter-sm">
       <q-editor v-model="editor" min-height="5rem" />
 
@@ -23,6 +31,15 @@
         <q-card-section v-html="editor" />
       </q-card>
     </div>
+
+    <!-- video lesson part -->
+    <div class="q-pa-md">
+      <q-form>
+        <q-input outlined v-model="video.videoUrl" label="Video URL" />
+      </q-form>
+      <h4>{{ video.title }}</h4>
+      <q-video :ratio="16 / 9" :src="video.videoUrl" />
+    </div>
   </q-page>
 </template>
 
@@ -33,20 +50,37 @@ export default {
       editor: 'What you see is <b>what</b> you get.',
       lessonTitle: 'Nuclear Reactor Types',
       activePart: '',
+      video: {
+        videoUrl: 'https://www.youtube.com/embed/TZgK9EvRfEc',
+        title: 'Just Have a Think'
+      },
       parts: [
-        { id: 'aaaa', heading: 'Overview', content: 'A wide variety of nuclear reactors are in use today, and <em>more</em> are being invented.' },
-        { id: 'aaab', heading: 'Molten Salt Reactor (MSR)', content: 'This reactor type relies on liquid sodium to receive and transfer massive amounts of heat energy.' },
-        { id: 'aaac', heading: 'Very High-Temperature Reactor (VHTR)', content: 'Do not touch this one. You will be in for a nasty burn.' },
+        {
+          id: 'aaaa',
+          heading: 'Overview',
+          content:
+            'A wide variety of nuclear reactors are in use today, and <em>more</em> are being invented.'
+        },
+        {
+          id: 'aaab',
+          heading: 'Molten Salt Reactor (MSR)',
+          content:
+            'This reactor type relies on liquid sodium to receive and transfer massive amounts of heat energy.'
+        },
+        {
+          id: 'aaac',
+          heading: 'Very High-Temperature Reactor (VHTR)',
+          content: 'Do not touch this one. You will be in for a nasty burn.'
+        }
       ]
     }
   },
   computed: {
     listParts() {
-      const partHeadings = this.parts.map(part => part.heading)
+      const partHeadings = this.parts.map((part) => part.heading)
       return partHeadings
     }
   }
-
 }
 </script>
 
