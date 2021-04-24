@@ -33,13 +33,13 @@
     </div>
 
     <!-- video lesson part -->
-    <div class="q-pa-md">
+    <!-- <div class="q-pa-md">
       <q-form>
         <q-input outlined v-model="video.videoUrl" label="Video URL" />
       </q-form>
       <h4>{{ video.title }}</h4>
       <q-video :ratio="16 / 9" :src="video.videoUrl" />
-    </div>
+    </div> -->
   </q-page>
 </template>
 
