@@ -42,47 +42,47 @@ import EssentialLink from 'components/EssentialLink.vue'
 
 const linksList = [
   {
-    title: 'Docs',
-    caption: 'quasar.dev',
-    icon: 'school',
-    link: 'https://quasar.dev'
+    title: 'Home',
+    caption: 'Home Page',
+    icon: 'home',
+    link: '#/',
   },
   {
-    title: 'Github',
-    caption: 'github.com/quasarframework',
-    icon: 'code',
-    link: 'https://github.com/quasarframework'
+    title: 'Simulations',
+    caption: 'Play with nuclear simulations',
+    icon: 'power',
+    link: '#/sim',
   },
   {
-    title: 'Discord Chat Channel',
-    caption: 'chat.quasar.dev',
-    icon: 'chat',
-    link: 'https://chat.quasar.dev'
+    title: 'Course Catalog',
+    caption: 'Discover lessons about nuclear power',
+    icon: 'collections',
+    link: '#/explore',
   },
   {
-    title: 'Forum',
-    caption: 'forum.quasar.dev',
-    icon: 'record_voice_over',
-    link: 'https://forum.quasar.dev'
+    title: 'Drafting Table',
+    caption: 'Create and edit content (editor)',
+    icon: 'create',
+    link: '#/draft',
   },
   {
-    title: 'Twitter',
-    caption: '@quasarframework',
-    icon: 'rss_feed',
-    link: 'https://twitter.quasar.dev'
+    title: 'Curator',
+    caption: 'Organize and promote content (editor)',
+    icon: 'sort',
+    link: '#/curate',
   },
   {
-    title: 'Facebook',
-    caption: '@QuasarFramework',
-    icon: 'public',
-    link: 'https://facebook.quasar.dev'
+    title: 'Profile',
+    caption: 'Your member profile (member)',
+    icon: 'person',
+    link: '#/profile',
   },
   {
-    title: 'Quasar Awesome',
-    caption: 'Community Quasar projects',
-    icon: 'favorite',
-    link: 'https://awesome.quasar.dev'
-  }
+    title: 'Site Administration',
+    caption: 'Manage members and control access (admin)',
+    icon: 'manage_accounts',
+    link: '#/admin',
+  },
 ]
 
 import { defineComponent, ref } from 'vue'

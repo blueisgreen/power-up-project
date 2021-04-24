@@ -1,7 +1,7 @@
 <template>
   <q-page>
     <h2>Drafting Table</h2>
-    <div>A handy area for putting together lessons.</div>
+    <div class="q-pa-md">A handy area for putting together lessons.</div>
 
     <div class="q-pa-md">
       <div class="q-gutter-md" style="max-width: 300px">
@@ -51,8 +51,8 @@ export default {
       lessonTitle: 'Nuclear Reactor Types',
       activePart: '',
       video: {
-        videoUrl: 'https://www.youtube.com/embed/TZgK9EvRfEc',
-        title: 'Just Have a Think'
+        videoUrl: 'https://www.youtube.com/embed/wyrdhWc_gsY?controls=0',
+        title: 'Advanced Nuclear Energy'
       },
       parts: [
         {
