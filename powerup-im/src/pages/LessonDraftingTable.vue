@@ -1,28 +1,37 @@
 <template>
   <q-page>
     <h2>Drafting Table</h2>
-    <div class="q-pa-md">This is some info. It might go on and on. All that matters is that this information wraps and spills over correctly so that things do just go off to the right like some ridiculous AOL email formatters.</div>
-
+    
     <div class="q-pa-md q-gutter-md">
       <div style="max-width: 500px">
         <q-form>
-          <q-input v-model="lessonTitle" outlined label="Title" />
-          <q-select
-            v-model="activePart"
+          <q-input v-model="lessonTitle" outlined label="Lesson Title" />
+          <hr />
+          <q-input
+            v-model="newSegment.heading"
             outlined
-            :options="listParts"
-            label="Lesson Parts"
+            label="New Segment Heading"
           />
+          <q-btn
+            style="background: goldenrod; color: white"
+            icon-right="add"
+            label="Add"
+          />
+          <q-select
+            v-model="activeSegment"
+            outlined
+            :options="listSegments"
+            label="Segments"
+          />
+          <hr />
         </q-form>
       </div>
     </div>
 
-  <div class="q-pa-md q-gutter-sm">
-    <q-btn color="primary" icon="save" label="Save" />
-  </div>
-
     <!-- html lesson part -->
     <div class="q-pa-md q-gutter-sm">
+      <q-btn color="primary" icon="save" label="Save Content" />
+
       <q-editor
         v-model="editor"
         max-height="25rem"
@@ -92,19 +101,22 @@
         }"
       />
 
-      <q-card flat bordered>
-        <q-card-section v-html="editor" />
-      </q-card>
     </div>
 
     <!-- video lesson part -->
-    <!-- <div class="q-pa-md">
+    <div class="q-pa-md">
       <q-form>
-        <q-input outlined v-model="video.videoUrl" label="Video URL" />
+        <q-input v-model="video.videoUrl" outlined label="Video URL" />
       </q-form>
-      <h4>{{ video.title }}</h4>
+    </div>
+
+    <div class="q-pa-md">
+      <h3>Preview: {{ activeSegment }}</h3>
+      <q-card flat bordered>
+        <q-card-section v-html="editor" />
+      </q-card>
       <q-video :ratio="16 / 9" :src="video.videoUrl" />
-    </div> -->
+    </div>
   </q-page>
 </template>
 
@@ -114,12 +126,16 @@ export default {
     return {
       editor: '',
       lessonTitle: 'Nuclear Reactor Types',
-      activePart: '',
+      newSegment: {
+        heading: '',
+        content: '',
+      },
+      activeSegment: 'aaab',
       video: {
         videoUrl: 'https://www.youtube.com/embed/wyrdhWc_gsY?controls=0',
         title: 'Advanced Nuclear Energy',
       },
-      parts: [
+      segments: [
         {
           id: 'aaaa',
           heading: 'Overview',
@@ -141,9 +157,9 @@ export default {
     }
   },
   computed: {
-    listParts() {
-      const partHeadings = this.parts.map((part) => part.heading)
-      return partHeadings
+    listSegments() {
+      const segmentHeadings = this.segments.map((segment) => segment.heading)
+      return segmentHeadings
     },
   },
 }
