@@ -1,10 +1,10 @@
 <template>
   <q-page>
     <h2>Drafting Table</h2>
-    <div class="q-pa-md">A handy area for putting together lessons.</div>
+    <div class="q-pa-md">This is some info. It might go on and on. All that matters is that this information wraps and spills over correctly so that things do just go off to the right like some ridiculous AOL email formatters.</div>
 
-    <div class="q-pa-md">
-      <div class="q-gutter-md" style="max-width: 300px">
+    <div class="q-pa-md q-gutter-md">
+      <div style="max-width: 500px">
         <q-form>
           <q-input v-model="lessonTitle" outlined label="Title" />
           <q-select
@@ -17,25 +17,21 @@
       </div>
     </div>
 
+  <div class="q-pa-md q-gutter-sm">
+    <q-btn color="primary" icon="save" label="Save" />
+  </div>
+
     <!-- html lesson part -->
     <div class="q-pa-md q-gutter-sm">
       <q-editor
         v-model="editor"
-        min-height="5rem"
+        max-height="25rem"
         placeholder="--content goes here--"
         paragraph-tag="p"
         toolbar-push
         dark
         :toolbar="[
-          [
-            {
-              label: $q.lang.editor.align,
-              icon: $q.iconSet.editor.align,
-              fixedLabel: true,
-              list: 'only-icons',
-              options: ['left', 'center', 'right', 'justify'],
-            },
-          ],
+          ['left', 'center', 'right', 'justify'],
           ['bold', 'italic', 'strike', 'underline', 'subscript', 'superscript'],
           ['hr', 'link'],
           [
