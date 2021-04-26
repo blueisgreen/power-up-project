@@ -1,12 +1,14 @@
 <template>
   <q-page>
     <h2>Drafting Table</h2>
-    
+
     <div class="q-pa-md q-gutter-md">
       <div style="max-width: 500px">
         <q-form>
+          <div>Lesson</div>
           <q-input v-model="lessonTitle" outlined label="Lesson Title" />
           <hr />
+          <div>Lesson Segment</div>
           <q-input
             v-model="newSegment.heading"
             outlined
@@ -15,8 +17,9 @@
           <q-btn
             style="background: goldenrod; color: white"
             icon-right="add"
-            label="Add"
+            label="Add Segment"
           />
+          <div>.</div>
           <q-select
             v-model="activeSegment"
             outlined
@@ -24,14 +27,25 @@
             label="Segments"
           />
           <hr />
+          <div>Content for Active Segment</div>
+          <q-select
+            v-model="selectedContentType"
+            outlined
+            :options="contentTypes"
+            label="Content Type"
+          />
+          <q-btn
+            style="background: goldenrod; color: white"
+            icon-right="add"
+            label="Add Content"
+          />
         </q-form>
       </div>
     </div>
 
-    <!-- html lesson part -->
+    <!-- html content part -->
     <div class="q-pa-md q-gutter-sm">
       <q-btn color="primary" icon="save" label="Save Content" />
-
       <q-editor
         v-model="editor"
         max-height="25rem"
@@ -100,22 +114,36 @@
           verdana: 'Verdana',
         }"
       />
-
     </div>
 
-    <!-- video lesson part -->
+    <!-- video content part -->
     <div class="q-pa-md">
       <q-form>
-        <q-input v-model="video.videoUrl" outlined label="Video URL" />
+        <q-input v-model="video.url" outlined label="Video URL" />
       </q-form>
     </div>
 
+    <!-- image content part -->
+    <div class="q-pa-md">
+      <q-form>
+        <q-input v-model="image.url" outlined label="Image URL" />
+        <q-input v-model="image.alt" outlined label="Alt text" />
+      </q-form>
+    </div>
+
+    <!-- preview -->
     <div class="q-pa-md">
       <h3>Preview: {{ activeSegment }}</h3>
       <q-card flat bordered>
         <q-card-section v-html="editor" />
       </q-card>
-      <q-video :ratio="16 / 9" :src="video.videoUrl" />
+      <q-video :ratio="16 / 9" :src="video.url" />
+      <q-img
+        :src="image.url"
+        :alt="image.alt"
+        width="300px"
+        crossorigin="anonymous"
+      />
     </div>
   </q-page>
 </template>
@@ -124,7 +152,7 @@
 export default {
   data() {
     return {
-      editor: '',
+      editor: 'Let me tell you about <b>nuclear</b> power plants.',
       lessonTitle: 'Nuclear Reactor Types',
       newSegment: {
         heading: '',
@@ -132,9 +160,15 @@ export default {
       },
       activeSegment: 'aaab',
       video: {
-        videoUrl: 'https://www.youtube.com/embed/wyrdhWc_gsY?controls=0',
+        url: 'https://www.youtube.com/embed/wyrdhWc_gsY?controls=0',
         title: 'Advanced Nuclear Energy',
       },
+      image: {
+        url: 'https://cdn.quasar.dev/img/parallax2.jpg',
+        alt: 'Nuclear Power Plant',
+      },
+      contentTypes: ['text', 'video', 'image'],
+      selectedContentType: '',
       segments: [
         {
           id: 'aaaa',
