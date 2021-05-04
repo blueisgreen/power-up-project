@@ -1,7 +1,7 @@
 <template>
   <q-page>
     <h2>Drafting Table</h2>
-
+    <h3>{{ lessonTitle }}</h3>
     <div class="q-pa-md q-gutter-md">
       <div style="max-width: 500px">
         <q-form>
@@ -85,7 +85,6 @@ export default {
   data() {
     return {
       editor: 'Let me tell you about <b>nuclear</b> power plants.',
-      lessonTitle: 'Nuclear Reactor Types',
       newSegment: {
         heading: '',
         content: '',
@@ -126,6 +125,14 @@ export default {
     listSegments() {
       const segmentHeadings = this.segments.map((segment) => segment.heading)
       return segmentHeadings
+    },
+    lessonTitle: {
+      get() {
+        return this.$store.state.draftLesson.title
+      },
+      set(value) {
+        this.$store.commit('draftLesson/updateTitle', value)
+      },
     },
   },
 }

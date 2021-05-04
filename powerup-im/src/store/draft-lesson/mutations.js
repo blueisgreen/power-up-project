@@ -1,4 +1,3 @@
-/*
-export function someMutation (state) {
+export function updateTitle (state, title) {
+  state.title = title
 }
-*/
