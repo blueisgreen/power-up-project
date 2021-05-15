@@ -1,6 +1,6 @@
 <template>
   <div class="q-pa-md">
-    <div>Preview: {{ activeSegment }}</div>
+    <div>Title: {{ lessonTitle }}</div>
     <q-card flat bordered>
       <q-card-section v-html="editor" />
     </q-card>
@@ -15,6 +15,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
   data() {
     return {
@@ -30,6 +31,9 @@ export default {
       },
     }
   },
+  computed: mapState({
+    lessonTitle: state => state.draftLesson.title
+  })
 }
 </script>
 

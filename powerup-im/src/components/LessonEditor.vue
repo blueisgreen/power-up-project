@@ -19,7 +19,7 @@
       <q-select
         v-model="activeSegment"
         outlined
-        :options="listSegments"
+        :options="listSegmentOptions"
         label="Segments"
       />
       <hr />
@@ -60,8 +60,6 @@ import StandardEditor from 'components/StandardEditor.vue'
 
 export default {
   components: { StandardEditor },
-  setup() {
-  },
   data() {
     return {
       editor: 'Let me tell you about <b>nuclear</b> power plants.',
@@ -69,7 +67,7 @@ export default {
         heading: '',
         content: '',
       },
-      activeSegment: 'aaab',
+      activeSegment: '',
       video: {
         url: 'https://www.youtube.com/embed/wyrdhWc_gsY?controls=0',
         title: 'Advanced Nuclear Energy',
@@ -80,31 +78,18 @@ export default {
       },
       contentTypes: ['text', 'video', 'image'],
       selectedContentType: '',
-      segments: [
-        {
-          id: 'aaaa',
-          heading: 'Overview',
-          content:
-            'A wide variety of nuclear reactors are in use today, and <em>more</em> are being invented.',
-        },
-        {
-          id: 'aaab',
-          heading: 'Molten Salt Reactor (MSR)',
-          content:
-            'This reactor type relies on liquid sodium to receive and transfer massive amounts of heat energy.',
-        },
-        {
-          id: 'aaac',
-          heading: 'Very High-Temperature Reactor (VHTR)',
-          content: 'Do not touch this one. You will be in for a nasty burn.',
-        },
-      ],
     }
   },
   computed: {
-    listSegments() {
-      const segmentHeadings = this.segments.map((segment) => segment.heading)
-      return segmentHeadings
+    listSegmentOptions() {
+      const lessonPtr = this.$store.state.draftLesson
+      const segmentOptions = lessonPtr.segments.map((segment) => {
+        return {
+          label: lessonPtr.segmentsById[segment].heading,
+          value: lessonPtr.segmentsById[segment].id,
+        }
+      })
+      return segmentOptions
     },
     lessonTitle: {
       get() {

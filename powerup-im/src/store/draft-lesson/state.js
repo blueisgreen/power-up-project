@@ -1,7 +1,7 @@
 export default function () {
   return {
-    title: '',
-    activeSegmentId: 'aaab',
+    title: 'Blargy Pants',
+    activeSegmentId: '',
     segments: ['aaaa', 'aaab', 'aaac'],
     segmentsById: {
       aaaa: {
