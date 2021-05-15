@@ -1,6 +1,6 @@
 <template>
   <div class="q-pa-md">
-    <h3>Preview: {{ activeSegment }}</h3>
+    <div>Preview: {{ activeSegment }}</div>
     <q-card flat bordered>
       <q-card-section v-html="editor" />
     </q-card>

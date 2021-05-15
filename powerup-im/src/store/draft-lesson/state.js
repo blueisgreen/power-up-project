@@ -1,6 +1,6 @@
 export default function () {
   return {
-    title: 'Nuclear Reactor Types',
+    title: '',
     activeSegmentId: 'aaab',
     segments: ['aaaa', 'aaab', 'aaac'],
     segmentsById: {
