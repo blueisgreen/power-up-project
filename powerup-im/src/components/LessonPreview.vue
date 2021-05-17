@@ -1,6 +1,7 @@
 <template>
   <div class="q-pa-md">
     <div>Title: {{ lessonTitle }}</div>
+    <content-block key="uniqueKey1" />
     <q-card flat bordered>
       <q-card-section v-html="editor" />
     </q-card>
@@ -16,7 +17,10 @@
 
 <script>
 import { mapState } from 'vuex'
+import ContentBlock from './lessonViewer/ContentBlock.vue'
 export default {
+  components: { ContentBlock },
+  props: {},
   data() {
     return {
       editor: 'Let me tell you about <b>nuclear</b> power plants.',
@@ -32,8 +36,8 @@ export default {
     }
   },
   computed: mapState({
-    lessonTitle: state => state.draftLesson.title
-  })
+    lessonTitle: (state) => state.draftLesson.title,
+  }),
 }
 </script>
 

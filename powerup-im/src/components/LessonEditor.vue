@@ -57,7 +57,6 @@
 
 <script>
 import StandardEditor from 'components/StandardEditor.vue'
-
 export default {
   components: { StandardEditor },
   data() {

@@ -8,13 +8,15 @@
 import { mapState } from 'vuex'
 export default {
   props: {
-    contentKey: {
+    key: {
       type: String,
       default: '',
     },
   },
   computed: mapState({
-    editor: (state) => state.content.getContent(this.param.contentKey),
+    editor: (state) => {
+      state.content.getContent(state, this.param.key)
+    },
   }),
 }
 </script>
