@@ -1,25 +1,23 @@
 export default function () {
   return {
-    title: 'Blargy Pants',
+    title: 'Molten Salt Reactors (MSRs)',
     activeSegmentId: '',
     segments: ['aaaa', 'aaab', 'aaac'],
     segmentsById: {
       aaaa: {
         id: 'aaaa',
         heading: 'Overview',
-        content:
-          'A wide variety of nuclear reactors are in use today, and <em>more</em> are being invented.',
+        content: 'uniqueKey1',
       },
       aaab: {
         id: 'aaab',
-        heading: 'Molten Salt Reactor (MSR)',
-        content:
-          'This reactor type relies on liquid sodium to receive and transfer massive amounts of heat energy.',
+        heading: 'Basic Challenges of Molten Salt Reactors',
+        content: ['uniqueKey2a', 'uniqueKey2b', 'uniqueKey2c'],
       },
       aaac: {
         id: 'aaac',
-        heading: 'Very High-Temperature Reactor (VHTR)',
-        content: 'Do not touch this one. You will be in for a nasty burn.',
+        heading: 'How MSRs Work',
+        content: 'uniqueKey3',
       },
     },
   }
