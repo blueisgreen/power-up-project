@@ -1,17 +1,14 @@
 <template>
   <div class="q-pa-md">
     <div>Title: {{ lessonTitle }}</div>
-    <content-block key="uniqueKey1" />
-    <q-card flat bordered>
-      <q-card-section v-html="editor" />
-    </q-card>
-    <q-video :ratio="16 / 9" :src="video.url" />
+    <content-block :content="blah" />
+    <!-- <q-video :ratio="16 / 9" :src="video.url" />
     <q-img
       :src="image.url"
       :alt="image.alt"
       width="300px"
       crossorigin="anonymous"
-    />
+    /> -->
   </div>
 </template>
 
@@ -20,10 +17,14 @@ import { mapState } from 'vuex'
 import ContentBlock from './lessonViewer/ContentBlock.vue'
 export default {
   components: { ContentBlock },
-  props: {},
   data() {
     return {
       editor: 'Let me tell you about <b>nuclear</b> power plants.',
+      blah: {
+        id: 'blargy123',
+        type: 'text',
+        content: 'Show me!'
+      },
       activeSegment: 'aaab',
       video: {
         url: 'https://www.youtube.com/embed/wyrdhWc_gsY?controls=0',
@@ -35,9 +36,12 @@ export default {
       },
     }
   },
-  computed: mapState({
-    lessonTitle: (state) => state.draftLesson.title,
-  }),
+  computed: {
+    ...mapState({
+      lessonTitle: (state) => state.draftLesson.title,
+    }),
+    getContent: (id) => this.$store.getters.getContent(id)
+  },
 }
 </script>
 

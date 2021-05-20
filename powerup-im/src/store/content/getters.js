@@ -1,3 +1,3 @@
-export function getContent (state, key) {
-  return state.blocksByKey[key]
+export function getContent (state) {
+  return state.blocksByKey['uniqueKey1']
 }

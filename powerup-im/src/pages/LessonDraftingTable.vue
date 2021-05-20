@@ -34,7 +34,7 @@ export default {
   components: { LessonEditor, LessonPreview },
   setup() {
     return {
-      tab: ref('editor'),
+      tab: ref('preview'),
     }
   },
 }

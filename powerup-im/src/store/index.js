@@ -16,8 +16,8 @@ import draftLesson from './draft-lesson'
 export default store(function (/* { ssrContext } */) {
   const Store = createStore({
     modules: {
-      draftLesson,
       content,
+      draftLesson,
     },
 
     // enable strict mode (adds overhead!)

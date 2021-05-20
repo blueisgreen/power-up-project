@@ -1,5 +1,7 @@
 <template>
-  <rich-content-block v-if="isTextContent" :key="key" />
+  <div>
+    <rich-content-block v-if="content.type === 'text'" :content="content.content" />
+  </div>
 </template>
 
 <script>
@@ -8,15 +10,9 @@ import RichContentBlock from './RichContentBlock.vue'
 export default {
   components: { RichContentBlock },
   props: {
-    key: {
-      type: String,
-      default: '',
-    },
-  },
-  computed: {
-    isTextContent() {
-      return true
-      // return this.$store.content.getContent(this.props.key).type === 'text'
+    content: {
+      type: Object,
+      required: true,
     },
   },
 }
