@@ -1,14 +1,9 @@
 <template>
   <div class="q-pa-md">
     <div>Title: {{ lessonTitle }}</div>
-    <content-block :content="blah" />
-    <!-- <q-video :ratio="16 / 9" :src="video.url" />
-    <q-img
-      :src="image.url"
-      :alt="image.alt"
-      width="300px"
-      crossorigin="anonymous"
-    /> -->
+    <content-block v-for="block in blocks" :key="block.id" :content="block" />
+    <content-block :content="videoBlock" />
+    <content-block :content="imageBlock" />
   </div>
 </template>
 
@@ -20,19 +15,39 @@ export default {
   data() {
     return {
       editor: 'Let me tell you about <b>nuclear</b> power plants.',
-      blah: {
-        id: 'blargy123',
-        type: 'text',
-        content: 'Show me!'
-      },
+      blocks: [
+        {
+          id: 'blargy123',
+          type: 'text',
+          content: 'Part 1 is first.',
+        },
+        {
+          id: 'blargy123',
+          type: 'text',
+          content: 'Then part 2.',
+        },
+        {
+          id: 'blargy123',
+          type: 'text',
+          content: 'Finally part 3. The End',
+        },
+      ],
       activeSegment: 'aaab',
-      video: {
-        url: 'https://www.youtube.com/embed/wyrdhWc_gsY?controls=0',
-        title: 'Advanced Nuclear Energy',
+      videoBlock: {
+        id: 'blabba',
+        type: 'video',
+        video: {
+          url: 'https://www.youtube.com/embed/wyrdhWc_gsY?controls=0',
+          title: 'Advanced Nuclear Energy',
+        },
       },
-      image: {
-        url: 'https://cdn.quasar.dev/img/parallax2.jpg',
-        alt: 'Nuclear Power Plant',
+      imageBlock: {
+        id: 'imgblah',
+        type: 'image',
+        image: {
+          url: 'https://cdn.quasar.dev/img/parallax2.jpg',
+          alt: 'Nuclear Power Plant',
+        },
       },
     }
   },
@@ -40,7 +55,7 @@ export default {
     ...mapState({
       lessonTitle: (state) => state.draftLesson.title,
     }),
-    getContent: (id) => this.$store.getters.getContent(id)
+    getContent: (id) => this.$store.getters.getContent(id),
   },
 }
 </script>

@@ -35,6 +35,20 @@
         icon-right="add"
         label="Add Content"
       />
+      <q-select
+        v-model="selectedContentType"
+        outlined
+        :options="contentTypes"
+        label="Content Type"
+      >
+        <template #before>
+          <q-icon name="event" />
+        </template>
+
+        <template #append>
+          <q-btn round dense flat icon="add" />
+        </template>
+      </q-select>
     </q-form>
   </div>
   <!-- html content part -->
@@ -56,9 +70,18 @@
 </template>
 
 <script>
+import { ref } from 'vue'
 import StandardEditor from 'components/StandardEditor.vue'
+
 export default {
   components: { StandardEditor },
+  setup() {
+    return {
+      text: ref(''),
+      ph: ref(''),
+      dense: ref(false),
+    }
+  },
   data() {
     return {
       editor: 'Let me tell you about <b>nuclear</b> power plants.',
