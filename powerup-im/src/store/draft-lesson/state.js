@@ -1,6 +1,8 @@
 export default function () {
   return {
+    id: 'blargy-butt-123',
     title: 'Molten Salt Reactors (MSRs)',
+    createdOn: new Date(),
     activeSegmentId: '',
     segments: ['aaaa', 'aaab', 'aaac'],
     segmentsById: {

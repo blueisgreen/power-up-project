@@ -1,20 +1,32 @@
 <template>
   <div class="q-pa-md">
-    <div>Title: {{ lessonTitle }}</div>
-    <content-block v-for="block in blocks" :key="block.id" :content="block" />
-    <content-block :content="videoBlock" />
-    <content-block :content="imageBlock" />
+    <q-card flat bordered>
+      <q-card-section>
+        <strong>ID:</strong> {{ lessonId }} <br/>
+        <strong>Title:</strong> {{ lessonTitle }} <br/>
+        <strong>Created On:</strong> {{ createdOn }} <br/>
+      </q-card-section>
+      <content-block
+        v-for="block in getBlocks"
+        :key="block.id"
+        :content="block"
+      />
+    </q-card>
+    <!-- <content-block :content="videoBlock" /> -->
+    <!-- <content-block :content="imageBlock" /> -->
   </div>
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { useStore, mapState, mapGetters } from 'vuex'
 import ContentBlock from './lessonViewer/ContentBlock.vue'
 export default {
   components: { ContentBlock },
   data() {
+    const $store = useStore()
     return {
       editor: 'Let me tell you about <b>nuclear</b> power plants.',
+      contentBlocks: ['blargy123', 'blargy124', 'blargy125'],
       blocks: [
         {
           id: 'blargy123',
@@ -22,12 +34,12 @@ export default {
           content: 'Part 1 is first.',
         },
         {
-          id: 'blargy123',
+          id: 'blargy124',
           type: 'text',
           content: 'Then part 2.',
         },
         {
-          id: 'blargy123',
+          id: 'blargy125',
           type: 'text',
           content: 'Finally part 3. The End',
         },
@@ -53,9 +65,17 @@ export default {
   },
   computed: {
     ...mapState({
+      lessonId: (state) => state.draftLesson.id,
       lessonTitle: (state) => state.draftLesson.title,
+      createdOn: (state) => state.draftLesson.createdOn,
+      segment: (state) => state.draftLesson.segmentsById.aaab,
     }),
-    getContent: (id) => this.$store.getters.getContent(id),
+    ...mapGetters(['getContent']),
+    getBlocks() {
+      return this.contentBlocks.map((blockId) =>
+        this.blocks.find((block) => block.id === blockId)
+      )
+    },
   },
 }
 </script>

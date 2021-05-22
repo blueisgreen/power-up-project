@@ -1,3 +1,5 @@
-export function getContent (state) {
-  return state.blocksByKey['uniqueKey1']
+export function getContent(state) {
+  ;(id) => {
+    return state.blocksByKey[id]
+  }
 }
