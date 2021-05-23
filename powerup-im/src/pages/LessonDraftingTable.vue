@@ -4,13 +4,17 @@
     <div class="q-pa-md q-gutter-md">
       <q-card>
         <q-tabs v-model="tab">
-          <q-tab name="editor" label="Editor" />
+          <q-tab name="lessons" label="Lessons" />
+          <q-tab name="editor" label="Content" />
           <q-tab name="preview" label="Preview" />
         </q-tabs>
 
         <q-separator />
 
         <q-tab-panels v-model="tab">
+          <q-tab-panel name="lessons">
+            <course-structure />
+          </q-tab-panel>
           <q-tab-panel name="editor">
             <lesson-editor />
           </q-tab-panel>
@@ -26,15 +30,16 @@
 </template>
 
 <script>
+import CourseStructure from 'components/CourseStructure.vue'
 import LessonEditor from 'components/LessonEditor.vue'
 import LessonPreview from 'components/LessonPreview.vue'
 import { ref } from 'vue'
 
 export default {
-  components: { LessonEditor, LessonPreview },
+  components: { CourseStructure, LessonEditor, LessonPreview },
   setup() {
     return {
-      tab: ref('preview'),
+      tab: ref('lessons'),
     }
   },
 }
