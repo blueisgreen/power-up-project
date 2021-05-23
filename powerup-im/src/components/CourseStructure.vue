@@ -1,5 +1,19 @@
 <template>
   <h1>Lessons</h1>
+  <div class="q-pa-md" style="max-width: 300px">
+    <div class="q-gutter-md">
+      <q-select
+        v-model="activeLesson"
+        outlined
+        :options="lessonList"
+        option-value="id"
+        option-label="title"
+        map-options
+        label="Lessons"
+      />
+    </div>
+  </div>
+  <div>Active Lesson: ({{ activeLesson.id }}) {{ activeLesson.title }}</div>
   <div v-for="unit in course" :key="unit.unit">
     <div class="unit-header">Unit: {{ unit.unit }}</div>
     <ul>
@@ -10,58 +24,76 @@
   </div>
 </template>
 
+// TODO move state into store or use new approach
 <script>
+import { ref } from 'vue'
 export default {
+  setup() {
+    return {
+      }
+  },
   data() {
     return {
+      activeLesson: {},
       course: [
         {
           unit: 'Fission',
           lessons: [
-            { title: 'Why Atoms Split' },
-            { title: 'Fission Math' },
-            { title: 'Chain Reactions' },
-            { title: 'Controlling Neutrons' },
-            { title: 'Properties of Isotopes' },
+            { id: 1, title: 'Why Atoms Split' },
+            { id: 2, title: 'Fission Math' },
+            { id: 3, title: 'Chain Reactions' },
+            { id: 4, title: 'Controlling Neutrons' },
+            { id: 5, title: 'Properties of Isotopes' },
           ],
         },
         {
           unit: 'Radiation',
           lessons: [
-            { title: 'Radiation is Everywhere' },
-            { title: 'The Right Dose for the Job' },
-            { title: 'Effects on Materials' },
+            { id: 6, title: 'Radiation is Everywhere' },
+            { id: 7, title: 'The Right Dose for the Job' },
+            { id: 8, title: 'Effects on Materials' },
           ],
         },
         {
           unit: 'Controlled Nuclear Reactions',
           lessons: [
-            { title: 'Building Bombs' },
-            { title: 'Generating Power' },
-            { title: 'Medical Treatment' },
-            { title: 'Scientific and Medical Breakthroughs' },
+            { id: 9, title: 'Building Bombs' },
+            { id: 10, title: 'Generating Power' },
+            { id: 11, title: 'Medical Treatment' },
+            { id: 12, title: 'Scientific and Medical Breakthroughs' },
           ],
         },
         {
           unit: 'Generation IV Nuclear Power',
           lessons: [
-            { title: 'Stable, Safe, Clean Power Production' },
-            { title: 'Types of Gen IV Nuclear Reactors' },
-            { title: 'They Can Almost Fit in Your Pocket (SMRs)' },
-            { title: 'Safety Factors' },
-            { title: 'What About Accidents?' },
+            { id: 13, title: 'Stable, Safe, Clean Power Production' },
+            { id: 14, title: 'Types of Gen IV Nuclear Reactors' },
+            { id: 15, title: 'They Can Almost Fit in Your Pocket (SMRs)' },
+            { id: 16, title: 'Safety Factors' },
+            { id: 17, title: 'What About Accidents?' },
           ],
         },
         {
           unit: 'Famous Nuclear Accidents',
           lessons: [
-            { title: '9 Mile Island' },
-            { title: 'Chernobyl' },
-            { title: 'Fukushima' },
+            { id: 18, title: '9 Mile Island' },
+            { id: 19, title: 'Chernobyl' },
+            { id: 20, title: 'Fukushima' },
           ],
         },
       ],
     }
+  },
+  computed: {
+    lessonList() {
+      let all = []
+      this.course.forEach((unit) => all.push(...unit.lessons))
+      return all
+
+      // return this.course.forEach((unit) => {
+      //   all.concat(unit.lessons)
+      // })
+    },
   },
 }
 </script>

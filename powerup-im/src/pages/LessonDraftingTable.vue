@@ -4,18 +4,18 @@
     <div class="q-pa-md q-gutter-md">
       <q-card>
         <q-tabs v-model="tab">
-          <q-tab name="lessons" label="Lessons" />
-          <q-tab name="editor" label="Content" />
+          <q-tab name="course" label="Course" />
+          <q-tab name="lesson" label="Lesson Details" />
           <q-tab name="preview" label="Preview" />
         </q-tabs>
 
         <q-separator />
 
         <q-tab-panels v-model="tab">
-          <q-tab-panel name="lessons">
+          <q-tab-panel name="course">
             <course-structure />
           </q-tab-panel>
-          <q-tab-panel name="editor">
+          <q-tab-panel name="lesson">
             <lesson-editor />
           </q-tab-panel>
           <q-tab-panel name="preview">
@@ -39,7 +39,7 @@ export default {
   components: { CourseStructure, LessonEditor, LessonPreview },
   setup() {
     return {
-      tab: ref('lessons'),
+      tab: ref('course'),
     }
   },
 }
