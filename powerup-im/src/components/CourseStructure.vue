@@ -34,7 +34,10 @@ export default {
   },
   data() {
     return {
-      activeLesson: {},
+      activeLesson: {
+        id: 1,
+        title: 'hello world'
+      },
       course: [
         {
           unit: 'Fission',
