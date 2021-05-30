@@ -10,6 +10,7 @@
     <hr />
     <div v-if="activeArticle" class="row items-start q-gutter-md">
       <article-view :article="activeArticle" />
+      <article-edit :article="activeArticle" />
     </div>
   </q-page>
 </template>
@@ -20,9 +21,10 @@ import { api } from '../boot/axios'
 import { useQuasar } from 'quasar'
 import { date } from 'quasar'
 import ArticleView from '../components/ArticleView.vue'
+import ArticleEdit from '../components/ArticleEdit.vue'
 
 export default {
-  components: { ArticleView },
+  components: { ArticleView, ArticleEdit },
   setup() {
     const $q = useQuasar()
     const articles = ref(null)
