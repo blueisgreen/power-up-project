@@ -58,43 +58,49 @@ const linksList = [
     title: 'Home',
     caption: 'Home Page',
     icon: 'home',
-    link: '#/'
+    link: '/'
   },
   {
     title: 'Simulations',
     caption: 'Play with nuclear simulations',
     icon: 'power',
-    link: '#/sim'
+    link: '/sims'
   },
   {
     title: 'Course Catalog',
     caption: 'Discover lessons about nuclear power',
     icon: 'collections',
-    link: '#/explore'
+    link: '/explore'
   },
   {
     title: 'Drafting Table',
     caption: 'Create and edit content (editor)',
     icon: 'create',
-    link: '#/draft'
+    link: '/draft'
   },
   {
-    title: 'Curator',
+    title: 'Course Composer',
     caption: 'Organize and promote content (editor)',
     icon: 'sort',
-    link: '#/curate'
+    link: '/composer'
+  },
+  {
+    title: 'Articles',
+    caption: 'Publish Articles',
+    icon: 'sort',
+    link: '/articles'
   },
   {
     title: 'Profile',
     caption: 'Your member profile (member)',
     icon: 'person',
-    link: '#/profile'
+    link: '/profile'
   },
   {
     title: 'Site Administration',
     caption: 'Manage members and control access (admin)',
     icon: 'manage_accounts',
-    link: '#/admin'
+    link: '/admin'
   }
 ]
 

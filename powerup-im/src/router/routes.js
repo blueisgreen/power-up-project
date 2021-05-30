@@ -16,6 +16,22 @@ const routes = [
         path: 'profile',
         component: () => import('pages/MemberProfile.vue'),
       },
+      {
+        path: 'composer',
+        component: () => import('pages/CourseComposer.vue'),
+      },
+      {
+        path: 'articles',
+        component: () => import('pages/Articles.vue'),
+      },
+      {
+        path: 'sims',
+        component: () => import('pages/ComingSoon.vue'),
+      },
+      {
+        path: 'explore',
+        component: () => import('pages/ComingSoon.vue'),
+      },
     ],
   },
 

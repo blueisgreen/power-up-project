@@ -72,6 +72,8 @@
 </template>
 
 <script>
+import { useQuasar } from 'quasar'
+
 export default {
   props: {
     content: {
@@ -86,6 +88,9 @@ export default {
       type: Function,
       default: () => console.log('implement me'),
     },
+  },
+  setup() {
+    const $q = useQuasar()
   },
   data() {
     return {
