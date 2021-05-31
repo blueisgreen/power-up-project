@@ -3,15 +3,13 @@
     <h1>Articles</h1>
     <div v-for="article in articles" :key="article.id" class="row q-gutter-md">
       <span @click="() => selectArticle(article.id)">
-        <strong>{{ article.headline }}</strong>. Published on
+        <strong>{{ article.headline }}</strong
+        >. Published on
         {{ date.formatDate(article.publishedAt, 'MMM D, YYYY @ H:mm') }}
       </span>
     </div>
     <hr />
-    <div v-if="activeArticle" class="row items-start q-gutter-md">
-      <article-view :article="activeArticle" />
-      <article-edit :article="activeArticle" />
-    </div>
+    <article-detail :article="activeArticle" :onClose="handleCloseArticle" />
   </q-page>
 </template>
 
@@ -20,11 +18,10 @@ import { ref, onMounted } from 'vue'
 import { api } from '../boot/axios'
 import { useQuasar } from 'quasar'
 import { date } from 'quasar'
-import ArticleView from '../components/ArticleView.vue'
-import ArticleEdit from '../components/ArticleEdit.vue'
+import ArticleDetail from '../components/ArticleDetail.vue'
 
 export default {
-  components: { ArticleView, ArticleEdit },
+  components: { ArticleDetail },
   setup() {
     const $q = useQuasar()
     const articles = ref(null)
@@ -55,6 +52,9 @@ export default {
     selectArticle(id) {
       this.activeArticle = this.articles.find((article) => article.id === id)
     },
+    handleCloseArticle() {
+      this.activeArticle = null
+    }
   },
 }
 </script>

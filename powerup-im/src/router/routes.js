@@ -22,7 +22,7 @@ const routes = [
       },
       {
         path: 'articles',
-        component: () => import('pages/Articles.vue'),
+        component: () => import('src/pages/ArticlesPage.vue'),
       },
       {
         path: 'sims',

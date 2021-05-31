@@ -27,7 +27,7 @@ export default {
 
 <style lang="scss" scoped>
 .my-card {
-  width: 75%;
+  width: 100%;
   max-height: 250px;
   overflow-y: scroll;
 }
