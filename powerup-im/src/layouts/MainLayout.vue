@@ -61,6 +61,12 @@ const linksList = [
     link: '/'
   },
   {
+    title: 'Articles',
+    caption: 'Publish Articles',
+    icon: 'article',
+    link: '/articles'
+  },
+  {
     title: 'Simulations',
     caption: 'Play with nuclear simulations',
     icon: 'power',
@@ -73,10 +79,10 @@ const linksList = [
     link: '/explore'
   },
   {
-    title: 'Drafting Table',
-    caption: 'Create and edit content (editor)',
-    icon: 'create',
-    link: '/draft'
+    title: 'Profile',
+    caption: 'Your member profile (member)',
+    icon: 'person',
+    link: '/profile'
   },
   {
     title: 'Course Composer',
@@ -85,16 +91,10 @@ const linksList = [
     link: '/composer'
   },
   {
-    title: 'Articles',
-    caption: 'Publish Articles',
-    icon: 'sort',
-    link: '/articles'
-  },
-  {
-    title: 'Profile',
-    caption: 'Your member profile (member)',
-    icon: 'person',
-    link: '/profile'
+    title: 'Drafting Table',
+    caption: 'Create and edit content (editor)',
+    icon: 'create',
+    link: '/draft'
   },
   {
     title: 'Site Administration',
