@@ -1,8 +1,8 @@
 <template>
-  <div v-if="_.isEmpty(article)" class="row items-start q-gutter-md">
+  <div v-if="lodash.isEmpty(article)" class="row items-start q-gutter-md">
     <h3>Pick an article from the list.</h3>
   </div>
-  <div v-if="!_.isEmpty(article)" class="items-start q-gutter-md">
+  <div v-if="!lodash.isEmpty(article)" class="items-start q-gutter-md">
     <div class="row">
       <button :disabled="state.edit" @click="() => (state.edit = true)">
         Edit
@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import _ from 'lodash'
+import lodash from 'lodash'
 import { ref } from 'vue'
 import ArticleView from '../components/ArticleView.vue'
 import ArticleEdit from '../components/ArticleEdit.vue'
@@ -50,7 +50,7 @@ export default {
       edit: false,
     })
     return {
-      _,
+      lodash,
       state,
     }
   },

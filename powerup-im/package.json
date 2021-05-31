@@ -9,7 +9,7 @@
   "scripts": {
     "lint": "eslint --ext .js,.vue ./",
     "test": "echo \"No test specified\" && exit 0",
-    "mocksrv": "json-server --watch src/store/db.json"
+    "mockapi": "json-server --watch src/store/db.json"
   },
   "dependencies": {
     "@quasar/extras": "^1.0.0",
