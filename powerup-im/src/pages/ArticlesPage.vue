@@ -1,11 +1,8 @@
 <template>
   <q-page class="q-pa-md">
     <h1>Articles</h1>
-    <div
-      v-for="article in publishedArticles"
-      :key="article.id"
-      class="row q-gutter-md"
-    >
+    <button @click="loadArticles">Load</button>
+    <div v-for="article in articles" :key="article.id" class="row q-gutter-md">
       <span @click="() => select(article)">
         <strong>{{ article.headline }}</strong
         >. Published on
@@ -19,19 +16,16 @@
 
 <script>
 import { api } from '../boot/axios'
-import { useQuasar } from 'quasar'
 import { date } from 'quasar'
-import { reactive } from 'vue'
+import { ref } from 'vue'
 import ArticleDetail from '../components/ArticleDetail.vue'
 
 export default {
   components: { ArticleDetail },
   setup() {
-    let articles = reactive([])
-    let activeArticle = reactive(null)
     return {
-      articles,
-      activeArticle,
+      articles: ref([]),
+      activeArticle: ref(null),
       date,
     }
   },
@@ -41,32 +35,23 @@ export default {
       return this.articles.filter((e) => e.publishedAt)
     },
   },
-  mounted() {
-    this.getArticles()
-  },
   methods: {
-    getArticles() {
+    loadArticles() {
       console.log('called getArticles')
-      const $q = useQuasar()
       api
         .get('/articles')
         .then((response) => {
           this.articles = response.data
         })
-        .catch(() => {
-          $q.notify({
-            color: 'negative',
-            position: 'top',
-            messgae: 'Loading failed',
-            icon: 'report_problem',
-          })
+        .catch((err) => {
+          console.log('API problem', err)
         })
     },
     select(article) {
-      activeArticle = article
+      this.activeArticle = article
     },
     unselect() {
-      activeArticle = null
+      this.activeArticle = null
     },
   },
 }
