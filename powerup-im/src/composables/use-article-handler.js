@@ -1,28 +1,29 @@
 import { reactive } from 'vue'
 
-const articles = reactive([])
-const activeArticle = reactive({})
+const state = reactive({
+  articles: [],
+  activeArticle: null
+})
 
 export const useArticleHandler = function () {
-  let load = function(articles) {
+  let load = function(articlesIn) {
     console.log('loading...')
-    articles.forEach(article => {
-      articles.push(article)
-      console.log(article)
+    articlesIn.forEach((article) => {
+      state.articles.push(article)
     })
   }
   let select = function(article) {
-    activeArticle = article
+    state.activeArticle = article
   }
   let unselect = function() {
-    activeArticle = null
+    state.activeArticle = null
   }
   return {
-    articles,
-    activeArticle,
+    articles: state.articles,
+    activeArticle: state.activeArticle,
     load,
     select,
-    unselect
+    unselect,
   }
 }
 

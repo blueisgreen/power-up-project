@@ -2,20 +2,20 @@
   <div class="q-pa-md" style="max-width: 400px">
     <q-form class="q-gutter-md" @submit="onSubmit" @reset="onReset">
       <q-input
-        v-model="headline"
+        v-model="draft.headline"
         filled
         label="Make it interesting"
         lazy-rules
         :rules="[(val) => (val && val.length > 0) || 'Please type something']"
       />
       <q-input
-        v-model="byline"
+        v-model="draft.byline"
         filled
         label="Who wrote the article"
         lazy-rules
         :rules="[(val) => (val && val.length > 0) || 'Please type something']"
       />
-      <q-editor v-model="content" min-height="5rem" />
+      <q-editor v-model="draft.content" min-height="5rem" />
 
       <div>
         <q-btn label="Submit" type="submit" color="primary" />
@@ -38,25 +38,22 @@ export default {
   props: {
     article: {
       type: Object,
-      required: true
+      required: true,
     },
+    onSave: {
+      type: Function,
+      default() {
+        console.log('do something with the draft', draft)
+      }
+    }
   },
   setup(props) {
-    console.log('ArticleEdit props', props)
-    const draftArticle = Object.assign({}, props.article)
-    console.log('cloned article', draftArticle)
     return {
-      headline: draftArticle.headline,
-      byline: draftArticle.byline,
-      content: draftArticle.content
+      draft: {...props.article}
     }
   },
   methods: {
-    onSubmit: function () {
-      console.log(
-        'You clicked the Submit button. Right on it...as soon as my programmer tells me what to do with that.', { headline, byline, content }
-      )
-    },
+    onSubmit: function () { onSave() },
     onReset: function () {
       console.log('You clicked the Reset button. And...?')
     },

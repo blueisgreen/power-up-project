@@ -17,15 +17,17 @@
 <script>
 import { api } from '../boot/axios'
 import { date } from 'quasar'
-import { ref } from 'vue'
 import ArticleDetail from '../components/ArticleDetail.vue'
+import useArticleHandler from '../composables/use-article-handler'
+
+const handler = useArticleHandler()
 
 export default {
   components: { ArticleDetail },
   setup() {
     return {
-      articles: ref([]),
-      activeArticle: ref(null),
+      articles: handler.articles,
+      activeArticle: handler.activeArticle,
       date,
     }
   },
@@ -41,17 +43,18 @@ export default {
       api
         .get('/articles')
         .then((response) => {
-          this.articles = response.data
+          handler.load(response.data)
         })
         .catch((err) => {
           console.log('API problem', err)
         })
     },
     select(article) {
-      this.activeArticle = article
+      console.log('select', article.id)
+      handler.select(article)
     },
     unselect() {
-      this.activeArticle = null
+      handler.unselect()
     },
   },
 }
