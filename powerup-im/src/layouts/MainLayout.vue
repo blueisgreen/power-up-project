@@ -31,7 +31,6 @@
     </q-drawer>
 
     <q-page-container>
-      <span v-if="leftDrawerOpen">Open</span><span v-if="!leftDrawerOpen">Closed</span>
       <router-view />
     </q-page-container>
 

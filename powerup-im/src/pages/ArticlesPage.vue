@@ -1,16 +1,29 @@
 <template>
   <q-page class="q-pa-md">
     <h1>Articles</h1>
-    <button @click="loadArticles">Load</button>
-    <div v-for="article in handler.articles" :key="article.id" class="row q-gutter-md">
-      <span @click="() => select(article)">
-        <strong>{{ article.headline }}</strong
-        >. Published on
-        {{ date.formatDate(article.publishedAt, 'MMM D, YYYY @ H:mm') }}
-      </span>
+    <div class="q-pa-md">
+      <q-list bordered separator>
+        <q-item
+          v-for="article in publishedArticles"
+          :key="article.id"
+          clickable
+          ripple
+          @click="() => select(article)"
+        >
+          <q-item-section>
+            <q-item-label>{{ article.headline }}</q-item-label>
+            <q-item-label v-if="article.publishedAt" caption>
+              By: {{ article.byline ? article.byline : 'anonymous' }}
+            </q-item-label>
+            <q-item-label v-if="article.publishedAt" caption>
+              Published on: {{ date.formatDate(new Date(), 'D MMM YYYY') }}
+            </q-item-label>
+          </q-item-section>
+        </q-item>
+      </q-list>
     </div>
     <hr />
-    <article-detail :article="activeArticle" @close="unselect" />
+    <article-detail :article="selected" @close="unselect" />
   </q-page>
 </template>
 
@@ -18,44 +31,45 @@
 import { api } from '../boot/axios'
 import { date } from 'quasar'
 import ArticleDetail from '../components/ArticleDetail.vue'
-import useArticleHandler from '../composables/use-article-handler'
 
-let handler = useArticleHandler()
+const NOT_SELECTED = {}
 
 export default {
   components: { ArticleDetail },
-  setup() {
+  data() {
     return {
-      handler,
-      articles: handler.articles,
-      activeArticle: handler.activeArticle,
+      articles: [],
+      selected: NOT_SELECTED,
       date,
     }
   },
   computed: {
     publishedArticles() {
-      console.log('called publishedArticles', this.articles)
       return this.articles.filter((e) => e.publishedAt)
     },
   },
+  mounted() {
+    this.getArticles()
+  },
   methods: {
-    loadArticles() {
-      console.log('called getArticles')
+    getArticles() {
       api
         .get('/articles')
         .then((response) => {
-          handler.load(response.data)
+          this.articles = response.data
         })
         .catch((err) => {
           console.log('API problem', err)
         })
     },
     select(article) {
-      console.log('select', article.id)
-      handler.select(article)
+      this.selected = article
     },
     unselect() {
-      handler.unselect()
+      this.selected = NOT_SELECTED
+    },
+    ping() {
+      console.log('ping')
     },
   },
 }

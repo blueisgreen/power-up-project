@@ -1,9 +1,6 @@
-import { reactive } from 'vue'
+import { ref, computed } from 'vue'
 
-const state = reactive({
-  articles: [],
-  activeArticle: null
-})
+const articles = ref([])
 
 export const useArticleHandler = function () {
   let load = function(articlesIn) {
