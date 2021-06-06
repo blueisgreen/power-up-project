@@ -2,14 +2,14 @@
   <div class="q-pa-md" style="max-width: 400px">
     <q-form class="q-gutter-md" @submit="onSubmit" @reset="onReset">
       <q-input
-        v-model="draft.headline"
+        v-model="draft.headline.value"
         filled
         label="Make it interesting"
         lazy-rules
         :rules="[(val) => (val && val.length > 0) || 'Please type something']"
       />
       <q-input
-        v-model="draft.byline"
+        v-model="draft.byline.value"
         filled
         label="Who wrote the article"
         lazy-rules

@@ -2,7 +2,7 @@
   <q-page class="q-pa-md">
     <h1>Articles</h1>
     <button @click="loadArticles">Load</button>
-    <div v-for="article in articles" :key="article.id" class="row q-gutter-md">
+    <div v-for="article in handler.articles" :key="article.id" class="row q-gutter-md">
       <span @click="() => select(article)">
         <strong>{{ article.headline }}</strong
         >. Published on
@@ -20,12 +20,13 @@ import { date } from 'quasar'
 import ArticleDetail from '../components/ArticleDetail.vue'
 import useArticleHandler from '../composables/use-article-handler'
 
-const handler = useArticleHandler()
+let handler = useArticleHandler()
 
 export default {
   components: { ArticleDetail },
   setup() {
     return {
+      handler,
       articles: handler.articles,
       activeArticle: handler.activeArticle,
       date,

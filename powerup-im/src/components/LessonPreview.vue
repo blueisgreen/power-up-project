@@ -18,7 +18,6 @@
 </template>
 
 <script>
-import { useStore, mapState, mapGetters } from 'vuex'
 import ContentBlock from './lessonViewer/ContentBlock.vue'
 export default {
   components: { ContentBlock },
@@ -44,6 +43,9 @@ export default {
           content: 'Finally part 3. The End',
         },
       ],
+      lessonId: 'waaah',
+      lessonTitle: 'waaah',
+      createdOn: new Date(),
       activeSegment: 'aaab',
       videoBlock: {
         id: 'blabba',
@@ -64,13 +66,6 @@ export default {
     }
   },
   computed: {
-    ...mapState({
-      lessonId: (state) => state.draftLesson.id,
-      lessonTitle: (state) => state.draftLesson.title,
-      createdOn: (state) => state.draftLesson.createdOn,
-      segment: (state) => state.draftLesson.segmentsById.aaab,
-    }),
-    ...mapGetters(['getContent']),
     getBlocks() {
       return this.contentBlocks.map((blockId) =>
         this.blocks.find((block) => block.id === blockId)
