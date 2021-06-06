@@ -1,37 +1,24 @@
+import Index from '../pages/Index.vue'
+import LessonDraftingTable from '../pages/LessonDraftingTable.vue'
+import AdminMembers from '../pages/AdminMembers.vue'
+import MemberProfile from '../pages/MemberProfile.vue'
+import CourseComposer from '../pages/CourseComposer.vue'
+import ArticlesPage from '../pages/ArticlesPage.vue'
+import ComingSoon from '../pages/ComingSoon.vue'
+
 const routes = [
   {
     path: '/',
     component: () => import('layouts/MainLayout.vue'),
     children: [
-      { path: '', component: () => import('pages/Index.vue') },
-      {
-        path: 'draft',
-        component: () => import('pages/LessonDraftingTable.vue'),
-      },
-      {
-        path: 'admin',
-        component: () => import('pages/AdminMembers.vue'),
-      },
-      {
-        path: 'profile',
-        component: () => import('pages/MemberProfile.vue'),
-      },
-      {
-        path: 'composer',
-        component: () => import('pages/CourseComposer.vue'),
-      },
-      {
-        path: 'articles',
-        component: () => import('src/pages/ArticlesPage.vue'),
-      },
-      {
-        path: 'sims',
-        component: () => import('pages/ComingSoon.vue'),
-      },
-      {
-        path: 'explore',
-        component: () => import('pages/ComingSoon.vue'),
-      },
+      { path: '', component: Index },
+      { path: 'draft', component: LessonDraftingTable },
+      { path: 'admin', component: AdminMembers },
+      { path: 'profile', component: MemberProfile },
+      { path: 'composer', component: CourseComposer },
+      { path: 'articles', component: ArticlesPage },
+      { path: 'sims', component: ComingSoon },
+      { path: 'explore', component: ComingSoon },
     ],
   },
 

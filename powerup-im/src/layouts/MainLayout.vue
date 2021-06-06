@@ -10,7 +10,6 @@
           aria-label="Menu"
           @click="toggleLeftDrawer"
         />
-
         <q-toolbar-title>
           <q-avatar square color="gray">
             <img src="~assets/logo-clear.svg" />
@@ -23,7 +22,6 @@
     <q-drawer v-model="leftDrawerOpen" show-if-above bordered class="bg-grey-1">
       <q-list>
         <q-item-label header class="text-grey-8"> Features </q-item-label>
-
         <EssentialLink
           v-for="link in essentialLinks"
           :key="link.title"
@@ -33,6 +31,7 @@
     </q-drawer>
 
     <q-page-container>
+      <span v-if="leftDrawerOpen">Open</span><span v-if="!leftDrawerOpen">Closed</span>
       <router-view />
     </q-page-container>
 
@@ -44,7 +43,6 @@
           </q-avatar>
           Copyright &copy; 2021 Happy Spirit Publishing
         </q-toolbar-title>
-        <!-- <q-toolbar-title> Copyright &copy; 2021 Happy Spirit Publishing </q-toolbar-title> -->
       </q-toolbar>
     </q-footer>
   </q-layout>
@@ -58,50 +56,50 @@ const linksList = [
     title: 'Home',
     caption: 'Home Page',
     icon: 'home',
-    link: '/'
+    link: '/',
   },
   {
     title: 'Articles',
     caption: 'Publish Articles',
     icon: 'article',
-    link: '/articles'
+    link: '/articles',
   },
   {
     title: 'Simulations',
     caption: 'Play with nuclear simulations',
     icon: 'power',
-    link: '/sims'
+    link: '/sims',
   },
   {
     title: 'Course Catalog',
     caption: 'Discover lessons about nuclear power',
     icon: 'collections',
-    link: '/explore'
+    link: '/explore',
   },
   {
     title: 'Profile',
     caption: 'Your member profile (member)',
     icon: 'person',
-    link: '/profile'
+    link: '/profile',
   },
   {
     title: 'Course Composer',
     caption: 'Organize and promote content (editor)',
     icon: 'sort',
-    link: '/composer'
+    link: '/composer',
   },
   {
     title: 'Drafting Table',
     caption: 'Create and edit content (editor)',
     icon: 'create',
-    link: '/draft'
+    link: '/draft',
   },
   {
     title: 'Site Administration',
     caption: 'Manage members and control access (admin)',
     icon: 'manage_accounts',
-    link: '/admin'
-  }
+    link: '/admin',
+  },
 ]
 
 import { defineComponent, ref } from 'vue'
@@ -110,19 +108,19 @@ export default defineComponent({
   name: 'MainLayout',
 
   components: {
-    EssentialLink
+    EssentialLink,
   },
 
-  setup() {
+  data() {
     const leftDrawerOpen = ref(false)
 
     return {
       essentialLinks: linksList,
-      leftDrawerOpen,
+      leftDrawerOpen: leftDrawerOpen,
       toggleLeftDrawer() {
         leftDrawerOpen.value = !leftDrawerOpen.value
-      }
+      },
     }
-  }
+  },
 })
 </script>
