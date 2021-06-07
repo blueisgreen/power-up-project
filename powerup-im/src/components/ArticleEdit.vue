@@ -32,7 +32,7 @@
 </template>
 
 <script>
-import { ref } from 'vue'
+import { toRefs } from 'vue'
 
 export default {
   props: {
@@ -48,8 +48,9 @@ export default {
     }
   },
   setup(props) {
+    const { article } = toRefs(props)
     return {
-      draft: {...props.article}
+      draft: {...article}
     }
   },
   methods: {

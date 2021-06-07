@@ -28,10 +28,10 @@
 </template>
 
 <script>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import { date } from 'quasar'
-import { api } from '../boot/axios'
 import ArticleDetail from '../components/ArticleDetail.vue'
+import { fetchArticles } from '../api/PowerUpService'
 
 const NOT_SELECTED = {}
 
@@ -40,15 +40,11 @@ export default {
   setup() {
     let articles = ref([])
     const getArticles = async () => {
-      api
-        .get('/articles')
-        .then((response) => {
-          articles.value = response.data
-        })
-        .catch((err) => {
-          console.log('API problem', err)
-        })
+      const results = await fetchArticles()
+      articles.value = results.data
     }
+    onMounted(getArticles)
+
     return {
       articles,
       getArticles
@@ -64,9 +60,6 @@ export default {
     publishedArticles() {
       return this.articles.filter((e) => e.publishedAt)
     },
-  },
-  mounted() {
-    this.getArticles()
   },
   methods: {
     select(article) {
