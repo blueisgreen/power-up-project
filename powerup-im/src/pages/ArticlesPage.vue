@@ -23,7 +23,7 @@
       </q-list>
     </div>
     <hr />
-    <article-detail :article="selected" @close="unselect" />
+    <article-detail :article="selectedArticle" @close="unselect" />
   </q-page>
 </template>
 
@@ -39,6 +39,7 @@ export default {
   components: { ArticleDetail },
   setup() {
     let articles = ref([])
+    let selected = ref(NOT_SELECTED)
     const getArticles = async () => {
       const results = await fetchArticles()
       articles.value = results.data
@@ -47,12 +48,12 @@ export default {
 
     return {
       articles,
+      selected,
       getArticles
     }
   },
   data() {
     return {
-      selected: NOT_SELECTED,
       date,
     }
   },
@@ -60,13 +61,16 @@ export default {
     publishedArticles() {
       return this.articles.filter((e) => e.publishedAt)
     },
+    selectedArticle() {
+      return this.selected.value
+    }
   },
   methods: {
     select(article) {
-      this.selected = article
+      this.selected.value = article
     },
     unselect() {
-      this.selected = NOT_SELECTED
+      this.selected.value = NOT_SELECTED
     },
     ping() {
       console.log('ping')

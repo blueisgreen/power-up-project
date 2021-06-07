@@ -2,14 +2,14 @@
   <div class="q-pa-md" style="max-width: 400px">
     <q-form class="q-gutter-md" @submit="onSubmit" @reset="onReset">
       <q-input
-        v-model="draft.headline.value"
+        v-model="draft.headline"
         filled
         label="Make it interesting"
         lazy-rules
         :rules="[(val) => (val && val.length > 0) || 'Please type something']"
       />
       <q-input
-        v-model="draft.byline.value"
+        v-model="draft.byline"
         filled
         label="Who wrote the article"
         lazy-rules
@@ -32,7 +32,7 @@
 </template>
 
 <script>
-import { toRefs } from 'vue'
+import { toRefs, ref } from 'vue'
 
 export default {
   props: {
@@ -43,18 +43,22 @@ export default {
     onSave: {
       type: Function,
       default() {
-        console.log('do something with the draft', draft)
+        console.log('do something with the draft')
       }
     }
   },
   setup(props) {
     const { article } = toRefs(props)
+    const draft = ref({
+      ...article.value
+    })
+    console.log('draft', draft.value)
     return {
-      draft: {...article}
+      draft
     }
   },
   methods: {
-    onSubmit: function () { onSave() },
+    onSubmit: function () { this.onSave() },
     onReset: function () {
       console.log('You clicked the Reset button. And...?')
     },
