@@ -28,17 +28,34 @@
 </template>
 
 <script>
-import { api } from '../boot/axios'
+import { ref } from 'vue'
 import { date } from 'quasar'
+import { api } from '../boot/axios'
 import ArticleDetail from '../components/ArticleDetail.vue'
 
 const NOT_SELECTED = {}
 
 export default {
   components: { ArticleDetail },
+  setup() {
+    let articles = ref([])
+    const getArticles = async () => {
+      api
+        .get('/articles')
+        .then((response) => {
+          articles.value = response.data
+        })
+        .catch((err) => {
+          console.log('API problem', err)
+        })
+    }
+    return {
+      articles,
+      getArticles
+    }
+  },
   data() {
     return {
-      articles: [],
       selected: NOT_SELECTED,
       date,
     }
@@ -52,16 +69,6 @@ export default {
     this.getArticles()
   },
   methods: {
-    getArticles() {
-      api
-        .get('/articles')
-        .then((response) => {
-          this.articles = response.data
-        })
-        .catch((err) => {
-          console.log('API problem', err)
-        })
-    },
     select(article) {
       this.selected = article
     },
