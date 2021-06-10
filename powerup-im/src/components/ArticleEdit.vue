@@ -33,6 +33,7 @@
 
 <script>
 import { toRefs, ref } from 'vue'
+import { saveArticle } from '../api/PowerUpService'
 
 export default {
   props: {
@@ -58,7 +59,10 @@ export default {
     }
   },
   methods: {
-    onSubmit: function () { this.onSave() },
+    onSubmit: function () {
+      console.log('Saving')
+      saveArticle(this.draft)
+    },
     onReset: function () {
       console.log('You clicked the Reset button. And...?')
     },

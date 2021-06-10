@@ -31,7 +31,7 @@
 import { ref, onMounted } from 'vue'
 import { date } from 'quasar'
 import ArticleDetail from '../components/ArticleDetail.vue'
-import { fetchArticles } from '../api/PowerUpService'
+import { fetchArticles, saveArticle } from '../api/PowerUpService'
 
 const NOT_SELECTED = {}
 
@@ -71,6 +71,10 @@ export default {
     },
     unselect() {
       this.selected.value = NOT_SELECTED
+    },
+    handleSave(update) {
+      const resp = saveArticle(update)
+      this.article = Object.assign({}, this.article, update)
     },
     ping() {
       console.log('ping')

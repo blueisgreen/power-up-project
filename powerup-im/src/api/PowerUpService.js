@@ -4,6 +4,7 @@ export async function fetchArticles() {
   return await api.get('/articles')
 }
 
-// export default {
-//   fetchArticles
-// }
+export async function saveArticle(update) {
+  console.log('sending update to service', update)
+  return await api.put(`/articles/${update.id}`, update)
+}

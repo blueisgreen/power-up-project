@@ -41,19 +41,28 @@
       "id": "nuclearPhysicsFundamentals",
       "title": "Nuclear Physics Fundamentals",
       "synopsis": "Explores the fundamental concepts of nuclear science. Isotopes. Radioactive decay. Neutrons. Chain reactions.",
-      "courseUnits": [1, 2, 3, 4]
+      "courseUnits": [
+        1,
+        2,
+        3,
+        4
+      ]
     },
     {
       "id": "genIVNuclear",
       "title": "Generation IV Nuclear Power",
       "synopsis": "Explains the goals of generation IV nuclear power. Provides an overview of reactor types and safety measures.",
-      "courseUnits": [5]
+      "courseUnits": [
+        5
+      ]
     },
     {
       "id": "learningFromAccidents",
       "title": "Learning from Nuclear Accidents",
       "synopsis": "Nuclear energy has a nasty reputation. Some of it is earned due to accidents and careless behavior. This course takes a look at what has gone wrong so far and what we have learned from the experience.",
-      "courseUnits": [6]
+      "courseUnits": [
+        6
+      ]
     }
   ],
   "courseUnits": [
@@ -62,85 +71,213 @@
       "unit": "Radioactivity",
       "createdOn": "2020-04-01",
       "updatedAt": "2020-04-01T00:00:01.000Z",
-      "lessons": [1, 5]
+      "lessons": [
+        1,
+        5
+      ]
     },
     {
       "id": 2,
       "unit": "Fission",
       "createdOn": "2020-04-01",
       "updatedAt": "2020-04-01T00:00:01.000Z",
-      "lessons": [2, 3, 4]
+      "lessons": [
+        2,
+        3,
+        4
+      ]
     },
     {
       "id": 3,
       "unit": "Radiation",
       "createdOn": "2020-04-01",
       "updatedAt": "2020-04-01T00:00:01.000Z",
-      "lessons": [6, 7, 8]
+      "lessons": [
+        6,
+        7,
+        8
+      ]
     },
     {
       "id": 4,
       "unit": "Controlled Nuclear Reactions",
       "createdOn": "2020-04-01",
       "updatedAt": "2020-04-01T00:00:01.000Z",
-      "lessons": [9, 10, 11, 12]
+      "lessons": [
+        9,
+        10,
+        11,
+        12
+      ]
     },
     {
       "id": 5,
       "unit": "Generation IV Nuclear Power",
       "createdOn": "2020-04-01",
       "updatedAt": "2020-04-01T00:00:01.000Z",
-      "lessons": [13, 14, 15, 16, 17]
+      "lessons": [
+        13,
+        14,
+        15,
+        16,
+        17
+      ]
     },
     {
       "id": 6,
       "unit": "Famous Nuclear Accidents",
       "createdOn": "2020-04-01",
       "updatedAt": "2020-04-01T00:00:01.000Z",
-      "lessons": [18, 19, 20]
+      "lessons": [
+        18,
+        19,
+        20
+      ]
     }
   ],
   "lessons": [
-    { "id": 1, "title": "Why Atoms Split", "content": ["uniqueKey0"] },
-    { "id": 2, "title": "Fission Math", "content": ["uniqueKey0"] },
-    { "id": 3, "title": "Chain Reactions", "content": ["uniqueKey0"] },
-    { "id": 4, "title": "Controlling Neutrons", "content": ["uniqueKey0"] },
-    { "id": 5, "title": "Properties of Isotopes", "content": ["uniqueKey0"] },
-    { "id": 6, "title": "Radiation is Everywhere", "content": ["uniqueKey0"] },
+    {
+      "id": 1,
+      "title": "Why Atoms Split",
+      "content": [
+        "uniqueKey0"
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Fission Math",
+      "content": [
+        "uniqueKey0"
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Chain Reactions",
+      "content": [
+        "uniqueKey0"
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Controlling Neutrons",
+      "content": [
+        "uniqueKey0"
+      ]
+    },
+    {
+      "id": 5,
+      "title": "Properties of Isotopes",
+      "content": [
+        "uniqueKey0"
+      ]
+    },
+    {
+      "id": 6,
+      "title": "Radiation is Everywhere",
+      "content": [
+        "uniqueKey0"
+      ]
+    },
     {
       "id": 7,
       "title": "The Right Dose for the Job",
-      "content": ["uniqueKey0"]
+      "content": [
+        "uniqueKey0"
+      ]
     },
-    { "id": 8, "title": "Effects on Materials", "content": ["uniqueKey0"] },
-    { "id": 9, "title": "Building Bombs", "content": ["uniqueKey0"] },
-    { "id": 10, "title": "Generating Power", "content": ["uniqueKey0"] },
-    { "id": 11, "title": "Medical Treatment", "content": ["uniqueKey0"] },
+    {
+      "id": 8,
+      "title": "Effects on Materials",
+      "content": [
+        "uniqueKey0"
+      ]
+    },
+    {
+      "id": 9,
+      "title": "Building Bombs",
+      "content": [
+        "uniqueKey0"
+      ]
+    },
+    {
+      "id": 10,
+      "title": "Generating Power",
+      "content": [
+        "uniqueKey0"
+      ]
+    },
+    {
+      "id": 11,
+      "title": "Medical Treatment",
+      "content": [
+        "uniqueKey0"
+      ]
+    },
     {
       "id": 12,
       "title": "Scientific and Medical Breakthroughs",
-      "content": ["uniqueKey0"]
+      "content": [
+        "uniqueKey0"
+      ]
     },
     {
       "id": 13,
       "title": "Stable, Safe, Clean Power Production",
-      "content": ["uniqueKey0"]
+      "content": [
+        "uniqueKey0"
+      ]
     },
     {
       "id": 14,
       "title": "Types of Gen IV Nuclear Reactors",
-      "content": ["uniqueKey1", "uniqueKey2a", "uniqueKey2b"]
+      "content": [
+        "uniqueKey1",
+        "uniqueKey2a",
+        "uniqueKey2b"
+      ]
     },
     {
       "id": 15,
       "title": "They Can Almost Fit in Your Pocket (SMRs)",
-      "content": ["uniqueKey3"]
+      "content": [
+        "uniqueKey3"
+      ]
     },
-    { "id": 16, "title": "Safety Factors", "content": ["uniqueKey4"] },
-    { "id": 17, "title": "What About Accidents?", "content": ["uniqueKey0"] },
-    { "id": 18, "title": "9 Mile Island", "content": ["uniqueKey0"] },
-    { "id": 19, "title": "Chernobyl", "content": ["uniqueKey0"] },
-    { "id": 20, "title": "Fukushima", "content": ["uniqueKey0"] }
+    {
+      "id": 16,
+      "title": "Safety Factors",
+      "content": [
+        "uniqueKey4"
+      ]
+    },
+    {
+      "id": 17,
+      "title": "What About Accidents?",
+      "content": [
+        "uniqueKey0"
+      ]
+    },
+    {
+      "id": 18,
+      "title": "9 Mile Island",
+      "content": [
+        "uniqueKey0"
+      ]
+    },
+    {
+      "id": 19,
+      "title": "Chernobyl",
+      "content": [
+        "uniqueKey0"
+      ]
+    },
+    {
+      "id": 20,
+      "title": "Fukushima",
+      "content": [
+        "uniqueKey0"
+      ]
+    }
   ],
   "contentBlocks": [
     {
