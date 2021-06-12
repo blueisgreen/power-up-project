@@ -1,6 +1,6 @@
 <template>
   <div class="q-pa-md" style="max-width: 400px">
-    <q-form class="q-gutter-md" @submit="onSubmit" @reset="onReset">
+    <q-form class="q-gutter-md" @submit="saveDraft" @reset="onReset">
       <q-input
         v-model="draft.headline"
         filled
@@ -45,20 +45,28 @@ export default {
       type: Function,
       default() {
         console.log('do something with the draft')
-      }
-    }
+      },
+    },
   },
-  setup(props) {
+  emits: ['saveArticle'],
+  setup(props, { emit }) {
     const { article } = toRefs(props)
     const draft = ref({
-      ...article.value
+      ...article.value,
     })
+    let saveDraft = () => {
+      emit('saveArticle', { update: draft })
+    }
     console.log('draft', draft.value)
     return {
-      draft
+      draft,
+      saveDraft,
     }
   },
   methods: {
+    handleSaveArticle() {
+      console.log('handleSaveArticle', this.draft)
+    },
     onSubmit: function () {
       console.log('Saving')
       saveArticle(this.draft)

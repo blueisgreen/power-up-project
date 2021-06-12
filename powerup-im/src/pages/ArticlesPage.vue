@@ -23,7 +23,11 @@
       </q-list>
     </div>
     <hr />
-    <article-detail :article="selectedArticle" @close="unselect" />
+    <article-detail
+      :article="selectedArticle"
+      @close="unselect"
+      @saveArticle="(article) => handleSaveArticle(article)"
+    />
   </q-page>
 </template>
 
@@ -49,7 +53,7 @@ export default {
     return {
       articles,
       selected,
-      getArticles
+      getArticles,
     }
   },
   data() {
@@ -63,7 +67,7 @@ export default {
     },
     selectedArticle() {
       return this.selected.value
-    }
+    },
   },
   methods: {
     select(article) {
@@ -72,7 +76,8 @@ export default {
     unselect() {
       this.selected.value = NOT_SELECTED
     },
-    handleSave(update) {
+    handleSaveArticle(update) {
+      console.log('saving article', update)
       const resp = saveArticle(update)
       this.article = Object.assign({}, this.article, update)
     },
