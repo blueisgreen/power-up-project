@@ -1,7 +1,7 @@
 <template>
   <q-page class="q-pa-md">
     <h1>Articles</h1>
-    <div v-if="!handler.activeArticle" class="q-pa-md">
+    <div v-if="!activeArticle" class="q-pa-md">
       <q-list bordered separator>
         <q-item
           v-for="article in publishedArticles"
@@ -22,12 +22,12 @@
         </q-item>
       </q-list>
     </div>
-    <article-detail v-if="handler.activeArticle" />
+    <article-detail v-if="activeArticle" />
   </q-page>
 </template>
 
 <script>
-import { onMounted } from 'vue'
+import { onMounted, toRef } from 'vue'
 import { date } from 'quasar'
 import ArticleDetail from '../components/ArticleDetail.vue'
 import useArticleHandler from '../composables/use-article-handler'
@@ -41,6 +41,7 @@ export default {
       const results = await fetchArticles()
       handler.load(results.data)
     }
+
     onMounted(getArticles)
 
     return {
@@ -52,6 +53,10 @@ export default {
     publishedArticles() {
       return this.handler.articles.filter((e) => e.publishedAt)
     },
+    activeArticle() {
+      console.log('activeArticle', this.handler.activeArticle.value)
+      return this.handler.activeArticle.value
+    }
   },
   methods: {
     select(article) {
