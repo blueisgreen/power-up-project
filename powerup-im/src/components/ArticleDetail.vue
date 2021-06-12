@@ -17,7 +17,7 @@
         <article-view :article="activeArticle" />
       </div>
       <div v-if="state.edit" class="col">
-        <article-edit :article="activeArticle" />
+        <article-edit :article="activeArticle" @save-article="handleSaveArticle" />
       </div>
     </div>
   </div>
@@ -28,6 +28,7 @@ import { ref } from 'vue'
 import useArticleHandler from '../composables/use-article-handler'
 import ArticleView from '../components/ArticleView.vue'
 import ArticleEdit from '../components/ArticleEdit.vue'
+import { saveArticle } from '../api/PowerUpService'
 
 export default {
   components: { ArticleView, ArticleEdit },
@@ -39,9 +40,18 @@ export default {
     return {
       activeArticle: handler.activeArticle,
       state,
-      unselect: handler.unselect
+      unselect: handler.unselect,
+      replace: handler.replace
     }
   },
+  methods: {
+    async handleSaveArticle({ draft }) {
+      console.log('ArticlePage.handleSaveArticle', draft)
+      const resp = await saveArticle(draft)
+      this.replace(resp.data)
+      console.log('ArticlePage.handleSaveArticle: response', resp.data)
+    },
+  }
 }
 </script>
 

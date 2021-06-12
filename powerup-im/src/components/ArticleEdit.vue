@@ -18,7 +18,7 @@
       <q-editor v-model="draft.content" min-height="5rem" />
 
       <div>
-        <q-btn label="Submit" type="submit" color="primary" />
+        <q-btn label="Save" type="submit" color="primary" />
         <q-btn
           label="Reset"
           type="reset"
@@ -32,7 +32,7 @@
 </template>
 
 <script>
-import { toRefs, ref } from 'vue'
+import { reactive } from 'vue'
 import { saveArticle } from '../api/PowerUpService'
 
 export default {
@@ -41,36 +41,22 @@ export default {
       type: Object,
       required: true,
     },
-    onSave: {
-      type: Function,
-      default() {
-        console.log('do something with the draft')
-      },
-    },
   },
   emits: ['saveArticle'],
   setup(props, { emit }) {
-    const { article } = toRefs(props)
-    const draft = ref({
-      ...article.value,
-    })
+    const draft = reactive({ ...props.article })
     let saveDraft = () => {
-      emit('saveArticle', { update: draft })
+      console.log('ArticleEdit.saveDraft', draft)
+      emit('saveArticle', { draft })
     }
-    console.log('draft', draft.value, 'original', article)
+    console.log('draft', draft, 'original', props.article)
+
     return {
       draft,
       saveDraft,
     }
   },
   methods: {
-    handleSaveArticle() {
-      console.log('handleSaveArticle', this.draft)
-    },
-    onSubmit: function () {
-      console.log('Saving')
-      saveArticle(this.draft)
-    },
     onReset: function () {
       console.log('You clicked the Reset button. And...?')
     },

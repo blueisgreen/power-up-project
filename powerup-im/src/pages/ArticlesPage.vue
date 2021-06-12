@@ -65,10 +65,6 @@ export default {
     unselect() {
       this.handler.unselect()
     },
-    handleSaveArticle(update) {
-      console.log('saving article', update)
-      const resp = saveArticle(update)
-    },
     ping() {
       console.log('ping')
     },
