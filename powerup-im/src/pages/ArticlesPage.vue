@@ -1,7 +1,7 @@
 <template>
   <q-page class="q-pa-md">
     <h1>Articles</h1>
-    <div class="q-pa-md">
+    <div v-if="!handler.activeArticle" class="q-pa-md">
       <q-list bordered separator>
         <q-item
           v-for="article in publishedArticles"
@@ -22,64 +22,47 @@
         </q-item>
       </q-list>
     </div>
-    <hr />
-    <article-detail
-      :article="selectedArticle"
-      @close="unselect"
-      @saveArticle="(article) => handleSaveArticle(article)"
-    />
+    <article-detail v-if="handler.activeArticle" />
   </q-page>
 </template>
 
 <script>
-import { ref, onMounted } from 'vue'
+import { onMounted } from 'vue'
 import { date } from 'quasar'
 import ArticleDetail from '../components/ArticleDetail.vue'
+import useArticleHandler from '../composables/use-article-handler'
 import { fetchArticles, saveArticle } from '../api/PowerUpService'
-
-const NOT_SELECTED = {}
 
 export default {
   components: { ArticleDetail },
   setup() {
-    let articles = ref([])
-    let selected = ref(NOT_SELECTED)
+    const handler = useArticleHandler()
     const getArticles = async () => {
       const results = await fetchArticles()
-      articles.value = results.data
+      handler.load(results.data)
     }
     onMounted(getArticles)
 
     return {
-      articles,
-      selected,
-      getArticles,
-    }
-  },
-  data() {
-    return {
+      handler,
       date,
     }
   },
   computed: {
     publishedArticles() {
-      return this.articles.filter((e) => e.publishedAt)
-    },
-    selectedArticle() {
-      return this.selected.value
+      return this.handler.articles.filter((e) => e.publishedAt)
     },
   },
   methods: {
     select(article) {
-      this.selected.value = article
+      this.handler.select(article.id)
     },
     unselect() {
-      this.selected.value = NOT_SELECTED
+      this.handler.unselect()
     },
     handleSaveArticle(update) {
       console.log('saving article', update)
       const resp = saveArticle(update)
-      this.article = Object.assign({}, this.article, update)
     },
     ping() {
       console.log('ping')

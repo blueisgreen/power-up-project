@@ -1,8 +1,8 @@
 <template>
-  <div v-if="lodash.isEmpty(article)" class="row items-start q-gutter-md">
+  <div v-if="!activeArticle" class="row items-start q-gutter-md">
     <h3>Pick an article from the list.</h3>
   </div>
-  <div v-if="!lodash.isEmpty(article)" class="items-start q-gutter-md">
+  <div v-if="activeArticle" class="items-start q-gutter-md">
     <div class="row">
       <button :disabled="state.edit" @click="() => (state.edit = true)">
         Edit
@@ -10,48 +10,36 @@
       <button :disabled="!state.edit" @click="() => (state.edit = false)">
         Save
       </button>
-      <button @click="onClose">Close</button>
+      <button @click="() => unselect()">Close</button>
     </div>
     <div class="row">
       <div v-if="!state.edit" class="col">
-        <article-view :article="article" />
+        <article-view :article="activeArticle" />
       </div>
       <div v-if="state.edit" class="col">
-        <article-edit :article="article" />
+        <article-edit :article="activeArticle" />
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import lodash from 'lodash'
 import { ref } from 'vue'
+import useArticleHandler from '../composables/use-article-handler'
 import ArticleView from '../components/ArticleView.vue'
 import ArticleEdit from '../components/ArticleEdit.vue'
 
 export default {
   components: { ArticleView, ArticleEdit },
-  props: {
-    article: {
-      type: Object,
-      default: function () {
-        return {}
-      },
-    },
-    onClose: {
-      type: Function,
-      default: function () {
-        console.log('Close action')
-      },
-    },
-  },
   setup() {
+    const handler = useArticleHandler()
     let state = ref({
       edit: false,
     })
     return {
-      lodash,
+      activeArticle: handler.activeArticle,
       state,
+      unselect: handler.unselect
     }
   },
 }

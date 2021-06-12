@@ -57,7 +57,7 @@ export default {
     let saveDraft = () => {
       emit('saveArticle', { update: draft })
     }
-    console.log('draft', draft.value)
+    console.log('draft', draft.value, 'original', article)
     return {
       draft,
       saveDraft,
