@@ -2,25 +2,30 @@
   <q-page class="q-pa-md">
     <h1>Articles</h1>
     <div v-if="!activeArticle" class="q-pa-md">
-      <q-list bordered separator>
-        <q-item
-          v-for="article in publishedArticles"
-          :key="article.id"
-          clickable
-          ripple
-          @click="() => select(article)"
-        >
-          <q-item-section>
-            <q-item-label>{{ article.headline }}</q-item-label>
-            <q-item-label v-if="article.publishedAt" caption>
-              By: {{ article.byline ? article.byline : 'anonymous' }}
-            </q-item-label>
-            <q-item-label v-if="article.publishedAt" caption>
-              Published on: {{ date.formatDate(new Date(), 'D MMM YYYY') }}
-            </q-item-label>
-          </q-item-section>
-        </q-item>
-      </q-list>
+      <q-scroll-area style="height: 400px; max-width: 800px">
+        <q-list bordered separator>
+          <q-item
+            v-for="article in allArticles"
+            :key="article.id"
+            clickable
+            ripple
+            @click="() => select(article)"
+          >
+            <q-item-section>
+              <q-item-label>{{ article.headline }}</q-item-label>
+              <q-item-label v-if="article.byline" caption>
+                By: {{ article.byline ? article.byline : 'anonymous' }}
+              </q-item-label>
+              <q-item-label v-if="article.publishedAt" caption>
+                Published on: {{ date.formatDate(new Date(), 'D MMM YYYY') }}
+              </q-item-label>
+              <q-item-label v-else-if="article.updatedAt" caption>
+                Updated on: {{ date.formatDate(new Date(), 'D MMM YYYY') }}
+              </q-item-label>
+            </q-item-section>
+          </q-item>
+        </q-list>
+      </q-scroll-area>
     </div>
     <article-detail v-if="activeArticle" />
   </q-page>
@@ -50,13 +55,16 @@ export default {
     }
   },
   computed: {
+    allArticles() {
+      return this.handler.articles
+    },
     publishedArticles() {
       return this.handler.articles.filter((e) => e.publishedAt)
     },
     activeArticle() {
       console.log('activeArticle', this.handler.activeArticle.value)
       return this.handler.activeArticle.value
-    }
+    },
   },
   methods: {
     select(article) {
