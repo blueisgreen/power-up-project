@@ -22,11 +22,21 @@ export const useArticleHandler = function () {
     console.log('use-article-handler.load', articles)
   }
   let replace = function (updatedArticle) {
-    const ind = articles.findIndex(article => article.id === updatedArticle.id)
+    const ind = articles.findIndex(
+      (article) => article.id === updatedArticle.id
+    )
     if (ind > -1) {
       articles[ind] = updatedArticle
     } else {
       console.log('unable to update, not found by ID', updatedArticle)
+    }
+  }
+  let addOrReplace = function (newArticle) {
+    const ind = articles.findIndex((article) => article.id === newArticle.id)
+    if (ind > -1) {
+      articles[ind] = newArticle
+    } else {
+      articles.push(newArticle)
     }
   }
   let select = function (id) {
@@ -42,6 +52,7 @@ export const useArticleHandler = function () {
     activeArticle,
     load,
     replace,
+    addOrReplace,
     select,
     unselect,
   }

@@ -7,5 +7,11 @@ export async function fetchArticles() {
 
 export async function saveArticle(update) {
   console.log('PowerUpService.saveArticle', update)
-  return await api.put(`/articles/${update.id}`, update)
+  let response
+  if (update.id === '#new#') {
+    response = await api.post('/articles/', update)
+  } else {
+    response = await api.put(`/articles/${update.id}`, update)
+  }
+  return response
 }

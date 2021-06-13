@@ -43,8 +43,13 @@ export default {
   components: { ArticleView, ArticleEdit },
   setup() {
     const handler = useArticleHandler()
+    let isEdit = false
+    console.log('is new', handler.activeArticle.value.id)
+    if (handler.activeArticle.value.id === '#new#') {
+      isEdit = true
+    }
     let state = ref({
-      edit: false,
+      edit: isEdit,
     })
     return {
       activeArticle: handler.activeArticle,

@@ -1,7 +1,15 @@
 <template>
   <q-page class="q-pa-md">
     <h1>Articles</h1>
-    <div v-if="!activeArticle" class="q-pa-md">
+    <div v-if="!activeArticle">
+      <div>
+        <q-btn
+          color="green"
+          icon="add_circle"
+          label="New Article"
+          @click="addArticle"
+        />
+      </div>
       <q-scroll-area style="height: 400px; max-width: 800px">
         <q-list bordered separator>
           <q-item
@@ -72,6 +80,11 @@ export default {
     },
     unselect() {
       this.handler.unselect()
+    },
+    addArticle() {
+      const blank = { id: '#new#' }
+      this.handler.addOrReplace(blank)
+      this.select(blank)
     },
   },
 }
