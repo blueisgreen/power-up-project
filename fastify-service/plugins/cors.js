@@ -8,7 +8,7 @@ const fp = require("fastify-plugin");
  * @see https://github.com/fastify/fastify-cors
  */
 module.exports = fp(async function (fastify, opts) {
-  console.log("loading fastify-cors");
+  fastify.log.info("loading fastify-cors");
   fastify.register(
     require("fastify-cors"),
     // Example disables the `contentSecurityPolicy` middleware but keeps the rest.

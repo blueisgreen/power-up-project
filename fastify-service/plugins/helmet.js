@@ -8,7 +8,7 @@ const fp = require("fastify-plugin");
  * @see https://github.com/fastify/fastify-helmet
  */
 module.exports = fp(async function (fastify, opts) {
-  console.log("loading fastify-helmet");
+  fastify.log.info("loading fastify-helmet");
   fastify.register(
     require("fastify-helmet"),
     // Example disables the `contentSecurityPolicy` middleware but keeps the rest.

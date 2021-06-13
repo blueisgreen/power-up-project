@@ -8,7 +8,7 @@ const fp = require("fastify-plugin");
  * @see https://github.com/smartiniOnGitHub/fastify-favicon
  */
 module.exports = fp(async function (fastify, opts) {
-  console.log('loading fastify-favicon')
+  fastify.log.info("loading fastify-favicon");
   fastify.register(require("fastify-favicon"), {
     errorHandler: false,
   });
