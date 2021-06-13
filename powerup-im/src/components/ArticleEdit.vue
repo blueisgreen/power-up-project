@@ -1,33 +1,32 @@
 <template>
   <div class="q-pa-md" style="max-width: 400px">
-    <q-form class="q-gutter-md" @submit="saveDraft" @reset="onReset">
-      <q-input
-        v-model="draft.headline"
-        filled
-        label="Make it interesting"
-        lazy-rules
-        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
-      />
-      <q-input
-        v-model="draft.byline"
-        filled
-        label="Who wrote the article"
-        lazy-rules
-        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
-      />
-      <q-editor v-model="draft.content" min-height="5rem" />
-
-      <div>
-        <q-btn label="Save" type="submit" color="primary" />
-        <q-btn
-          label="Reset"
-          type="reset"
-          color="primary"
-          flat
-          class="q-ml-sm"
+    <div class="row">
+      <q-btn color="secondary" icon="save" label="Save" @click="saveDraft" />
+      <q-btn color="red" icon="cancel" label="Cancel" @click="cancel" />
+    </div>
+    <div class="row">
+      <q-form class="q-gutter-md" @reset="onReset">
+        <q-input
+          v-model="draft.headline"
+          filled
+          label="Make it interesting"
+          lazy-rules
+          :rules="[(val) => (val && val.length > 0) || 'Please type something']"
         />
-      </div>
-    </q-form>
+        <q-input
+          v-model="draft.byline"
+          filled
+          label="Who wrote the article"
+          lazy-rules
+          :rules="[(val) => (val && val.length > 0) || 'Please type something']"
+        />
+        <q-editor v-model="draft.content" min-height="5rem" />
+      </q-form>
+    </div>
+    <div class="row">
+      <q-btn color="secondary" icon="save" label="Save" @click="saveDraft" />
+      <q-btn color="red" icon="cancel" label="Cancel" @click="cancel" />
+    </div>
   </div>
 </template>
 
@@ -42,18 +41,23 @@ export default {
       required: true,
     },
   },
-  emits: ['saveArticle'],
+  emits: ['saveArticle', 'cancelEdit'],
   setup(props, { emit }) {
     const draft = reactive({ ...props.article })
     let saveDraft = () => {
       console.log('ArticleEdit.saveDraft', draft)
       emit('saveArticle', { draft })
     }
+    let cancel = () => {
+      console.log('ArticleEdit.cancel')
+      emit('cancelEdit')
+    }
     console.log('draft', draft, 'original', props.article)
 
     return {
       draft,
       saveDraft,
+      cancel,
     }
   },
   methods: {

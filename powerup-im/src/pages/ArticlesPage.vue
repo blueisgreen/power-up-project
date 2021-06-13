@@ -31,7 +31,7 @@ import { onMounted, toRef } from 'vue'
 import { date } from 'quasar'
 import ArticleDetail from '../components/ArticleDetail.vue'
 import useArticleHandler from '../composables/use-article-handler'
-import { fetchArticles, saveArticle } from '../api/PowerUpService'
+import { fetchArticles } from '../api/PowerUpService'
 
 export default {
   components: { ArticleDetail },
@@ -64,9 +64,6 @@ export default {
     },
     unselect() {
       this.handler.unselect()
-    },
-    ping() {
-      console.log('ping')
     },
   },
 }
