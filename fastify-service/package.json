@@ -1,10 +1,13 @@
 {
-  "name": "fastify-service",
+  "name": "power-up-service",
   "version": "1.0.0",
   "description": "Power Up interactive magazine service",
   "main": "app.js",
   "directories": {
     "test": "test"
+  },
+  "repository": {
+    "url": "https://github.com/blueisgreen/power-up-project"
   },
   "scripts": {
     "test": "tap \"test/**/*.test.js\"",
@@ -12,7 +15,7 @@
     "dev": "fastify start -w -l info -P app.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Happy Spirit Publishing",
   "license": "ISC",
   "dependencies": {
     "fastify": "^3.0.0",
@@ -21,8 +24,12 @@
     "fastify-cors": "^6.0.1",
     "fastify-favicon": "^3.1.0",
     "fastify-helmet": "^5.3.1",
+    "fastify-knexjs": "^1.4.0",
     "fastify-plugin": "^3.0.0",
-    "fastify-sensible": "^3.1.0"
+    "fastify-postgres": "^3.5.0",
+    "fastify-sensible": "^3.1.0",
+    "marked": "^2.0.7",
+    "pg": "^8.6.0"
   },
   "devDependencies": {
     "tap": "^15.0.9"
