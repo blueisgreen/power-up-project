@@ -32,6 +32,20 @@ module.exports = async function (fastify, opts) {
     reply.send(articles);
   });
 
+  fastify.get("/knex/post", async (req, reply) => {
+    fastify.log.info("try knex insert");
+    const now = new Date()
+    const row = {
+      headline: 'Nuclear is Terrific' + now,
+      byline: 'Zanzibar',
+      content: 'This is gonna be good, I can tell.',
+      createdAt: now,
+      updatedAt: now,
+    }
+    const articles = await fastify.knex('articles').insert(row);
+    reply.send(articles);
+  });
+
   fastify.get("/:id", (req, reply) => {
     fastify.log.info("article id", req.params.id);
     fastify.pg.connect(onConnect);
