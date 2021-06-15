@@ -19,14 +19,17 @@ module.exports = async function (fastify, opts) {
     fastify.pg.connect(onConnect);
     function onConnect(err, client, release) {
       if (err) return reply.send(err);
-      client.query(
-        "SELECT * FROM articles",
-        function onResult(err, result) {
-          release();
-          reply.send(err || result.rows);
-        }
-      );
+      client.query("SELECT * FROM articles", function onResult(err, result) {
+        release();
+        reply.send(err || result.rows);
+      });
     }
+  });
+
+  fastify.get("/knex", async (req, reply) => {
+    fastify.log.info("try knex select");
+    const articles = await fastify.knex.select().from("articles");
+    reply.send(articles);
   });
 
   fastify.get("/:id", (req, reply) => {

@@ -9,19 +9,23 @@ const fp = require("fastify-plugin");
  */
 module.exports = fp(async function (fastify, opts) {
   fastify.log.info("loading fastify-knexjs");
-  fastify.register(require("fastify-knexjs"),
+  fastify.register(
+    require("fastify-knexjs"),
     {
-      client: 'pg',
-      version: '8.6',
+      client: "pg",
+      debug: true,
+      version: "8.6",
       connection: {
-        host: '127.0.0.1',
-        user: 'powerup_admin',
-        password: 'blue!$Green',
-        database: 'powerup_db-dev'
-      }
+        host: "127.0.0.1",
+        user: "powerup_admin",
+        password: "blue!$Green",
+        database: "powerup_db-dev",
+      },
+      // connectionString:
+      //   "postgres://powerup_admin:blue!$Green@localhost/powerup_db-dev",
     },
     (err) => {
-      fastify.log.error(err)
+      fastify.log.error(err);
     }
   );
 });

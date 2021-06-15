@@ -2,9 +2,17 @@
 const fastify = require("fastify")();
 
 module.exports = async function (fastify, opts) {
-  fastify.get("/", (request, reply) => {
-    fastify.log.info("knex", fastify.knex);
-  });
+
+  // fastify.get("/", async (request, reply) => {
+  //   const articles = await fastify.knex.select().from("articles");
+  //   reply.send(articles)
+  // });
+
+  fastify.get('/', async (request, reply) => {
+    fastify.log.info('try knex select')
+    const articles = await fastify.knex.select().from('articles')
+    reply.send(articles)
+  })
 
   fastify.get("/user/:id", (req, reply) => {
     fastify.log.info("user id", req.params.id);
