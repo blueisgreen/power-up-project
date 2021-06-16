@@ -8,7 +8,8 @@ export async function fetchArticles() {
 export async function saveArticle(update) {
   console.log('PowerUpService.saveArticle', update)
   let response
-  if (update.id === '#new#') {
+  if (!update.id || update.id === '#new#') {
+    delete update.id
     response = await api.post('/articles/', update)
   } else {
     response = await api.put(`/articles/${update.id}`, update)
