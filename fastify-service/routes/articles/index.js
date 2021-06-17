@@ -1,6 +1,45 @@
 "use strict";
 
 module.exports = async function (fastify, opts) {
+  const knex = fastify.knex
+
+  fastify.get('/dropcreate', async (req, reply) => {
+    await knex.schema.dropTableIfExists('articles')
+    await knex.schema.createTable('articles', table => {
+      table.increments('id')
+      table.string('headline')
+      table.string('byline')
+      table.text('content')
+      table.timestamp('created_at').defaultTo(knex.fn.now())
+      table.timestamp("updated_at").defaultTo(knex.fn.now());
+      table.timestamp('published_at')
+    })
+    reply.send('Dropped and created articles table.')
+  })
+
+  fastify.get("/", async (req, reply) => {
+    const articles = await knex.select().from("articles");
+    reply.send(articles);
+  });
+
+  fastify.post("/", async (req, reply) => {
+    const given = req.body;
+    fastify.log.info("payload:", given);
+    const row = {
+      ...given
+    };
+    delete row.id;
+    const result = await knex("articles").insert(row);
+
+    fastify.log.info("after insert:", result);
+    reply.send(result);
+  });
+
+  fastify.get("/:id", async (req, reply) => {
+    const articles = await knex.select().from("articles");
+    reply.send(articles);
+  });
+
   // fastify.get("/", async function (request, reply) {
   //   const now = new Date();
   //   return [
@@ -25,33 +64,6 @@ module.exports = async function (fastify, opts) {
   //     });
   //   }
   // });
-
-  fastify.get("/", async (req, reply) => {
-    const articles = await fastify.knex.select().from("articles");
-    reply.send(articles);
-  });
-
-  fastify.post("/", async (req, reply) => {
-    const given = req.body
-    fastify.log.info("payload:", given);
-
-    const now = new Date()
-    const row = {
-      ...given,
-      createdAt: now,
-      updatedAt: now
-    }
-    delete row.id
-
-    const result = await fastify.knex('articles').insert(row);
-    fastify.log.info('after insert:', result)
-    reply.send(result);
-  });
-
-  fastify.get("/:id", async (req, reply) => {
-    const articles = await fastify.knex.select().from("articles");
-    reply.send(articles);
-  });
 
   // fastify.get("/:id", (req, reply) => {
   //   fastify.log.info("article id", req.params.id);
