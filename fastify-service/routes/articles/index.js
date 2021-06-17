@@ -1,21 +1,21 @@
 "use strict";
 
 module.exports = async function (fastify, opts) {
-  const knex = fastify.knex
+  const knex = fastify.knex;
 
-  fastify.get('/dropcreate', async (req, reply) => {
-    await knex.schema.dropTableIfExists('articles')
-    await knex.schema.createTable('articles', table => {
-      table.increments('id')
-      table.string('headline')
-      table.string('byline')
-      table.text('content')
-      table.timestamp('created_at').defaultTo(knex.fn.now())
+  fastify.get("/dropcreate", async (req, reply) => {
+    await knex.schema.dropTableIfExists("articles");
+    await knex.schema.createTable("articles", (table) => {
+      table.increments("id");
+      table.string("headline");
+      table.string("byline");
+      table.text("content");
+      table.timestamp("created_at").defaultTo(knex.fn.now());
       table.timestamp("updated_at").defaultTo(knex.fn.now());
-      table.timestamp('published_at')
-    })
-    reply.send('Dropped and created articles table.')
-  })
+      table.timestamp("published_at");
+    });
+    reply.send("Dropped and created articles table.");
+  });
 
   fastify.get("/", async (req, reply) => {
     const articles = await knex.select().from("articles");
@@ -26,7 +26,7 @@ module.exports = async function (fastify, opts) {
     const given = req.body;
     fastify.log.info("payload:", given);
     const row = {
-      ...given
+      ...given,
     };
     delete row.id;
     const result = await knex("articles").insert(row);
@@ -36,23 +36,33 @@ module.exports = async function (fastify, opts) {
   });
 
   fastify.get("/:id", async (req, reply) => {
-    const articles = await knex.select().from("articles");
-    reply.send(articles);
+    try {
+      const articles = await knex.select().from("articles");
+      reply.send(articles);
+    } catch (err) {
+      fastify.log.error(err)
+      reply.code(500).send({ error: "bad news. something went wrong." });
+    }
   });
 
-  // fastify.get("/", async function (request, reply) {
-  //   const now = new Date();
-  //   return [
-  //     {
-  //       id: "1234",
-  //       headline: "Read All About It",
-  //       byline: "Zanzibar",
-  //       createdAt: now,
-  //       updatedAt: now,
-  //       content: "Things are going to be <b>amazing</b>.",
-  //     },
-  //   ];
-  // });
+  fastify.put("/:id", async (req, reply) => {
+    try {
+      const now = new Date()
+      const given = req.body
+      const result = await knex('articles')
+        .where({id: req.params.id})
+        .update({
+          headline: given.headline,
+          byline: given.byline,
+          content: given.content,
+          updatedAt: now
+        })
+      reply.send(result);
+    } catch (err) {
+      fastify.log.error(err)
+      reply.code(500).send({ error: "bad news. something went wrong." });
+    }
+  });
 
   // fastify.get("/", (req, reply) => {
   //   fastify.pg.connect(onConnect);
