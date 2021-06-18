@@ -29,7 +29,8 @@ module.exports = async function (fastify, opts) {
       ...given,
     };
     delete row.id;
-    const result = await knex("articles").insert(row);
+    const result = await knex("articles").
+      insert(row, ['id', 'headline', 'byline', 'content', 'created_at as createdAt', 'updated_at as updatedAt']);
 
     fastify.log.info("after insert:", result);
     reply.send(result);

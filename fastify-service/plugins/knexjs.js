@@ -21,8 +21,6 @@ module.exports = fp(async function (fastify, opts) {
         password: "blue!$Green",
         database: "powerup_db-dev",
       },
-      // connectionString:
-      //   "postgres://powerup_admin:blue!$Green@localhost/powerup_db-dev",
     },
     (err) => {
       fastify.log.error(err);
