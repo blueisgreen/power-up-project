@@ -8,9 +8,9 @@ const fp = require("fastify-plugin");
  * @see https://github.com/smartiniOnGitHub/fastify-knexjs
  */
 module.exports = fp(async function (fastify, opts) {
+  const { PG_CONNECTION } = fastify.config;
   fastify.log.info("loading fastify-postgres");
   fastify.register(require("fastify-postgres"), {
-    connectionString: "postgres://powerup_admin:blue!$Green@localhost/powerup_db-dev",
+    connectionString: PG_CONNECTION,
   });
 });
-
