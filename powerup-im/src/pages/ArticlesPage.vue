@@ -35,12 +35,12 @@
         </q-list>
       </q-scroll-area>
     </div>
-    <article-detail v-if="activeArticle" />
+    <article-detail v-if="activeArticle" :is-new="state.isNewArticle" />
   </q-page>
 </template>
 
 <script>
-import { onMounted, toRef } from 'vue'
+import { onMounted, ref } from 'vue'
 import { date } from 'quasar'
 import ArticleDetail from '../components/ArticleDetail.vue'
 import useArticleHandler from '../composables/use-article-handler'
@@ -54,12 +54,16 @@ export default {
       const results = await fetchArticles()
       handler.load(results.data)
     }
+    const state = ref({
+      isNewArticle: false
+    })
 
     onMounted(getArticles)
 
     return {
       handler,
       date,
+      state,
     }
   },
   computed: {
@@ -82,9 +86,8 @@ export default {
       this.handler.unselect()
     },
     addArticle() {
-      const blank = { id: '#new#' }
-      this.handler.addOrReplace(blank)
-      this.select(blank)
+      console.log('addArticle')
+      this.state.isNewArticle = true
     },
   },
 }

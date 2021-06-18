@@ -47,6 +47,9 @@ export const useArticleHandler = function () {
     activeId.value = null
     console.log('use-article-handler.unselect')
   }
+  let startNew = function () {
+
+  }
   return {
     articles,
     activeArticle,

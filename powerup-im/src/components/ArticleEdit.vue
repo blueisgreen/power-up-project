@@ -38,7 +38,13 @@ export default {
   props: {
     article: {
       type: Object,
-      required: true,
+      default() {
+        return {
+          headline: '',
+          byline: '',
+          content: '',
+        }
+      },
     },
   },
   emits: ['saveArticle', 'cancelEdit'],
