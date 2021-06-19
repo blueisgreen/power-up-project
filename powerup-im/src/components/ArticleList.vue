@@ -19,10 +19,7 @@
             Published on
             {{ date.formatDate(article.publishedAt, timestampFormat) }}
           </q-item-label>
-          <q-item-label
-            v-else-if="article.updatedAt !== article.createdAt"
-            caption
-          >
+          <q-item-label v-if="article.updatedAt !== article.createdAt" caption>
             Updated on {{ date.formatDate(article.updatedAt, timestampFormat) }}
           </q-item-label>
           <q-item-label caption>
@@ -33,7 +30,7 @@
           <q-avatar
             icon="edit"
             color="primary"
-            @click="() => openArticleForEdit(article)"
+            @click.stop="() => openArticleForEdit(article)"
           />
         </q-item-section>
       </q-item>

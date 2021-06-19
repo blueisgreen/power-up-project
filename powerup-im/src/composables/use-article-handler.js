@@ -46,7 +46,7 @@ export const useArticleHandler = function () {
       id: original.id,
       headline: original.headline,
       byline: original.byline,
-      content: 'original'
+      content: original.content
     }
   }
   let clearDraft = function() {

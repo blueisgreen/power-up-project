@@ -4,7 +4,7 @@
     <article-action-bar
       :mode="mode"
       @start-new-article="newArticle"
-      @open-for-edit="openForEdit"
+      @open-for-edit="openActiveForEdit"
       @save-draft="saveDraft"
       @cancel-draft="cancelUnsavedEdits"
       @close-article="unselect"
@@ -77,23 +77,33 @@ export default {
   },
   methods: {
     select(article) {
+      console.log('select', article)
       this.handler.select(article.id)
       this.state.mode = 'view'
     },
     unselect() {
+      console.log('unselect')
       this.handler.unselect()
       this.state.mode = 'list'
     },
     newArticle() {
+      console.log('newArticle')
       this.handler.unselect()
       this.handler.startNewDraft()
       this.state.mode = 'new'
     },
-    openForEdit(article) {
+    openActiveForEdit() {
+      console.log('openActiveForEdit')
       this.handler.startEdit(this.activeArticle)
       this.state.mode = 'edit'
     },
+    openForEdit(article) {
+      console.log('openForEdit', article)
+      this.select(article)
+      this.openActiveForEdit()
+    },
     async saveDraft() {
+      console.log('saveDraft')
       let resp
       if (this.state.mode === 'new') {
         resp = await createArticle(this.draftArctile)
@@ -107,6 +117,7 @@ export default {
       this.handler.replaceOrAdd(resp.data)
     },
     cancelUnsavedEdits() {
+      console.log('cancelUnsavedEdits')
       this.handler.clearDraft()
       if (!this.activeArticle) {
         this.state.mode = 'list'
