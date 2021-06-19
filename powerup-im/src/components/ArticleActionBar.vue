@@ -5,7 +5,6 @@
       color="green"
       icon="add_circle"
       label="New Article"
-      :disabled="activeArticle"
       @click="() => emit('start-new-article')"
     />
     <q-btn

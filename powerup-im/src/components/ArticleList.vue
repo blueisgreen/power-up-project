@@ -33,7 +33,7 @@
           <q-avatar
             icon="edit"
             color="primary"
-            @click="() => emit('open-for-edit', article)"
+            @click="() => openArticleForEdit(article)"
           />
         </q-item-section>
       </q-item>
@@ -59,14 +59,16 @@ export default {
   emits: ['select-article', 'open-for-edit'],
   setup(props, { emit }) {
     let selectArticle = (article) => {
-      console.log('selected article', article)
       emit('select-article', article)
+    }
+    let openArticleForEdit = (article) => {
+      emit('open-for-edit', article)
     }
     return {
       date,
       timestampFormat: 'D-MMM-YYYY @ H:m:s',
       selectArticle,
-      emit,
+      openArticleForEdit,
     }
   },
 }

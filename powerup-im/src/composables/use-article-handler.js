@@ -55,7 +55,7 @@ export const useArticleHandler = function () {
     }
   }
   let clearDraft = function() {
-    draft = null
+    draft.value = null
   }
   return {
     articles,
