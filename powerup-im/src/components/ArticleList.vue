@@ -6,7 +6,9 @@
         :key="article.id"
         clickable
         ripple
-        @click="() => select(article)"
+        :active="article === selectedArticle"
+        active-class="active-highlight"
+        @click="() => selectArticle(article)"
       >
         <q-item-section>
           <q-item-label>{{ article.headline }}</q-item-label>
@@ -14,13 +16,13 @@
             By: {{ article.byline ? article.byline : 'anonymous' }}
           </q-item-label>
           <q-item-label v-if="article.publishedAt" caption>
-            Published on: {{ date.formatDate(new Date(), format) }}
+            Published on: {{ date.formatDate(new Date(), timestampFormat) }}
           </q-item-label>
           <q-item-label v-else-if="article.updatedAt !== article.createdAt" caption>
-            Updated: {{ date.formatDate(article.updatedAt, format) }}
+            Updated: {{ date.formatDate(article.updatedAt, timestampFormat) }}
           </q-item-label>
           <q-item-label caption>
-            Created: {{ date.formatDate(article.createdAt, format) }}
+            Created: {{ date.formatDate(article.createdAt, timestampFormat) }}
           </q-item-label>
         </q-item-section>
       </q-item>
@@ -30,6 +32,7 @@
 
 <script>
 import { date } from 'quasar'
+import { emit } from 'vue'
 
 export default {
   props: {
@@ -37,14 +40,28 @@ export default {
       type: Array,
       required: true,
     },
+    selectedArticle: {
+      type: Object,
+      default: null
+    }
   },
-  setup() {
+  emits: ['select-article'],
+  setup(props, { emit }) {
+    let selectArticle = (article) => {
+      console.log('selected article', article)
+      emit('select-article', article)
+    }
     return {
       date,
-      format: 'D-MMM-YYYY H:m:s'
+      timestampFormat: 'D-MMM-YYYY @ H:m:s',
+      selectArticle
     }
   },
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+.activeHighlight {
+  background-color: lightsalmon;
+}
+</style>

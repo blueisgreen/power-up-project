@@ -1,15 +1,19 @@
 <template>
   <q-page class="q-pa-md">
     <h1>Article Management</h1>
-    <div v-if="!activeArticle">
+    <div>
       <q-btn
         color="green"
         icon="add_circle"
         label="New Article"
+        :disabled="activeArticle"
         @click="addArticle"
       />
     </div>
-    <article-list v-if="state.mode === 'list'" :articles="allArticles" />
+    <article-list v-if="state.mode === 'list'"
+      :articles="allArticles"
+      :selected-article="activeArticle"
+      @select-article="select" />
     <article-view v-else-if="state.mode === 'view'" :article="activeArticle" />
     <article-edit v-else-if="state.mode === 'edit'" :article="activeArticle" />
     <article-edit v-else-if="state.mode === 'new'" />
@@ -54,6 +58,7 @@ export default {
   },
   methods: {
     select(article) {
+      console.log('handling select-article event')
       this.handler.select(article.id)
     },
     unselect() {
