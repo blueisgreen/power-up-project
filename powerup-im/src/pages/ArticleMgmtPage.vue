@@ -23,9 +23,8 @@
       @select-article="select"
       @open-for-edit="openForEdit"
     />
-    <article-view v-else-if="mode === 'view'" :article="activeArticle" />
-    <article-edit v-else-if="mode === 'edit'" :article="activeArticle" />
-    <article-edit v-else-if="mode === 'new'" />
+    <article-view v-if="mode === 'view'" :article="activeArticle" />
+    <article-edit v-if="mode === 'edit' || mode === 'new'" />
   </q-page>
 </template>
 
@@ -36,7 +35,11 @@ import ArticleList from '../components/ArticleList.vue'
 import ArticleView from '../components/ArticleView.vue'
 import ArticleEdit from '../components/ArticleEdit.vue'
 import useArticleHandler from '../composables/use-article-handler'
-import { fetchArticles, saveArticle } from '../api/PowerUpService'
+import {
+  fetchArticles,
+  createArticle,
+  saveArticle,
+} from '../api/PowerUpService'
 
 export default {
   components: { ArticleActionBar, ArticleList, ArticleView, ArticleEdit },
@@ -65,13 +68,15 @@ export default {
       console.log('activeArticle', this.handler.activeArticle.value)
       return this.handler.activeArticle.value
     },
+    draftArticle() {
+      return this.handler.draft.value
+    },
     mode() {
       return this.state.mode
     },
   },
   methods: {
     select(article) {
-      console.log('handling select-article event')
       this.handler.select(article.id)
       this.state.mode = 'view'
     },
@@ -80,26 +85,26 @@ export default {
       this.state.mode = 'list'
     },
     newArticle() {
-      console.log('addArticle')
       this.handler.unselect()
-      this.handler.startNewDraft
+      this.handler.startNewDraft()
       this.state.mode = 'new'
     },
     openForEdit(article) {
-      const toOpen = article ? article : this.activeArticle
-      this.handler.select(toOpen.id)
+      this.handler.startEdit(this.activeArticle)
       this.state.mode = 'edit'
     },
     async saveDraft() {
-      console.log('IMPLEMENT ME! saveDraft')
-      // await this.handleSaveArticle(this.handler.draft)
-    },
-    async handleSaveArticle(draft) {
-      console.log('ArticlePage.handleSaveArticle', draft)
-      const resp = await saveArticle(draft)
-      this.replace(resp.data)
-      console.log('ArticlePage.handleSaveArticle: response', resp.data)
-      this.state.edit = false
+      let resp
+      if (this.state.mode === 'new') {
+        resp = await createArticle(this.draftArctile)
+        this.state.mode = 'edit'
+      } else if (this.state.mode === 'edit') {
+        resp = await saveArticle(this.draftArticle)
+      } else {
+        console.warn('Not sure why saveDraft was called. Ignoring.')
+        return
+      }
+      this.handler.replaceOrAdd(resp.data)
     },
     cancelUnsavedEdits() {
       this.handler.clearDraft()

@@ -23,19 +23,13 @@
 </template>
 
 <script>
-import { reactive } from 'vue'
+import useArticleHandler from '../composables/use-article-handler'
 
 export default {
-  props: {
-    article: {
-      type: Object,
-      required: true,
-    },
-  },
-  setup(props) {
-    const draft = reactive({ ...props.article })
+  setup() {
+    const handler = useArticleHandler()
     return {
-      draft,
+      draft: handler.draft
     }
   },
 }

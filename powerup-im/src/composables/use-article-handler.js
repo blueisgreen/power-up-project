@@ -20,19 +20,6 @@ export const useArticleHandler = function () {
       loaded = true
     }
   }
-  let replace = function (updatedArticle) {
-    const ind = articles.findIndex(
-      (article) => article.id === updatedArticle.id
-    )
-    if (ind > -1) {
-      articles[ind] = updatedArticle
-    } else {
-      console.log('unable to update, not found by ID', updatedArticle)
-    }
-  }
-  let addOrReplace = function (newArticle) {
-    this.replaceOrAdd(newArticle)
-  }
   let replaceOrAdd = function (newArticle) {
     const ind = articles.findIndex((article) => article.id === newArticle.id)
     if (ind > -1) {
@@ -48,10 +35,18 @@ export const useArticleHandler = function () {
     activeId.value = null
   }
   let startNewDraft = function () {
-    draft = {
+    draft.value = {
       headline: '',
       byline: '',
       content: ''
+    }
+  }
+  let startEdit = function(original) {
+    draft.value = {
+      id: original.id,
+      headline: original.headline,
+      byline: original.byline,
+      content: 'original'
     }
   }
   let clearDraft = function() {
@@ -62,12 +57,11 @@ export const useArticleHandler = function () {
     activeArticle,
     draft,
     load,
-    replace,
-    addOrReplace,
     replaceOrAdd,
     select,
     unselect,
     startNewDraft,
+    startEdit,
     clearDraft,
   }
 }
