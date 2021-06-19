@@ -3,7 +3,7 @@ import LessonDraftingTable from '../pages/LessonDraftingTable.vue'
 import AdminMembers from '../pages/AdminMembers.vue'
 import MemberProfile from '../pages/MemberProfile.vue'
 import CourseComposer from '../pages/CourseComposer.vue'
-import ArticlesPage from '../pages/ArticlesPage.vue'
+import ArticlesPage from '../pages/ArticleMgmtPage.vue'
 import ComingSoon from '../pages/ComingSoon.vue'
 
 const routes = [

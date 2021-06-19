@@ -34,17 +34,23 @@ module.exports = async function (fastify, opts) {
   });
 
   fastify.get("/", async (req, reply) => {
-    const articles = await knex(tableName).whereNull("archived_at").select();
+    const articles = await knex(tableName)
+      .whereNull("archived_at")
+      .select(columnsToReturn);
     reply.send(articles);
   });
 
   fastify.get("/published", async (req, reply) => {
-    const articles = await knex(tableName).whereNotNull("published_at").select();
+    const articles = await knex(tableName)
+      .whereNotNull("published_at")
+      .select(columnsToReturn);
     reply.send(articles);
   });
 
   fastify.get("/archived", async (req, reply) => {
-    const articles = await knex(tableName).whereNotNull("archived_at").select();
+    const articles = await knex(tableName)
+      .whereNotNull("archived_at")
+      .select(columnsToReturn);
     reply.send(articles);
   });
 
