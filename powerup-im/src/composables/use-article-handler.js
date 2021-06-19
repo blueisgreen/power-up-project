@@ -2,11 +2,11 @@ import { reactive, ref, computed } from 'vue'
 
 const articles = reactive([])
 const activeId = ref(null)
+const draft = ref(null)
 let loaded = false
 
 export const useArticleHandler = function () {
   let activeArticle = computed(() => {
-    console.log('use-article-handler.activeArticle', activeId)
     return activeId.value
       ? articles.find((article) => article.id === activeId.value)
       : null
@@ -19,7 +19,6 @@ export const useArticleHandler = function () {
       })
       loaded = true
     }
-    console.log('use-article-handler.load', articles)
   }
   let replace = function (updatedArticle) {
     const ind = articles.findIndex(
@@ -32,6 +31,9 @@ export const useArticleHandler = function () {
     }
   }
   let addOrReplace = function (newArticle) {
+    this.replaceOrAdd(newArticle)
+  }
+  let replaceOrAdd = function (newArticle) {
     const ind = articles.findIndex((article) => article.id === newArticle.id)
     if (ind > -1) {
       articles[ind] = newArticle
@@ -41,23 +43,32 @@ export const useArticleHandler = function () {
   }
   let select = function (id) {
     activeId.value = articles.find((article) => article.id === id) ? id : null
-    console.log('use-article-handler.select', activeId)
   }
   let unselect = function () {
     activeId.value = null
-    console.log('use-article-handler.unselect')
   }
-  let startNew = function () {
-
+  let startNewDraft = function () {
+    draft = {
+      headline: '',
+      byline: '',
+      content: ''
+    }
+  }
+  let clearDraft = function() {
+    draft = null
   }
   return {
     articles,
     activeArticle,
+    draft,
     load,
     replace,
     addOrReplace,
+    replaceOrAdd,
     select,
     unselect,
+    startNewDraft,
+    clearDraft,
   }
 }
 

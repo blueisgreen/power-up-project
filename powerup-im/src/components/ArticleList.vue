@@ -16,14 +16,25 @@
             By: {{ article.byline ? article.byline : 'anonymous' }}
           </q-item-label>
           <q-item-label v-if="article.publishedAt" caption>
-            Published on {{ date.formatDate(article.publishedAt, timestampFormat) }}
+            Published on
+            {{ date.formatDate(article.publishedAt, timestampFormat) }}
           </q-item-label>
-          <q-item-label v-else-if="article.updatedAt !== article.createdAt" caption>
+          <q-item-label
+            v-else-if="article.updatedAt !== article.createdAt"
+            caption
+          >
             Updated on {{ date.formatDate(article.updatedAt, timestampFormat) }}
           </q-item-label>
           <q-item-label caption>
             Created on {{ date.formatDate(article.createdAt, timestampFormat) }}
           </q-item-label>
+        </q-item-section>
+        <q-item-section avatar>
+          <q-avatar
+            icon="edit"
+            color="primary"
+            @click="() => emit('open-for-edit', article)"
+          />
         </q-item-section>
       </q-item>
     </q-list>
@@ -42,10 +53,10 @@ export default {
     },
     selectedArticle: {
       type: Object,
-      default: null
-    }
+      default: null,
+    },
   },
-  emits: ['select-article'],
+  emits: ['select-article', 'open-for-edit'],
   setup(props, { emit }) {
     let selectArticle = (article) => {
       console.log('selected article', article)
@@ -54,7 +65,8 @@ export default {
     return {
       date,
       timestampFormat: 'D-MMM-YYYY @ H:m:s',
-      selectArticle
+      selectArticle,
+      emit,
     }
   },
 }
