@@ -2,40 +2,45 @@
   <q-page class="q-pa-md">
     <h1>Article Management</h1>
     <div v-if="!activeArticle">
-      <div>
-        <q-btn
-          color="green"
-          icon="add_circle"
-          label="New Article"
-          @click="addArticle"
-        />
-      </div>
+      <q-btn
+        color="green"
+        icon="add_circle"
+        label="New Article"
+        @click="addArticle"
+      />
     </div>
-    <article-list :articles="allArticles" count="42" />
-    <article-detail v-if="activeArticle" />
+    <article-list v-if="state.mode === 'list'" :articles="allArticles" />
+    <article-view v-else-if="state.mode === 'view'" :article="activeArticle" />
+    <article-edit v-else-if="state.mode === 'edit'" :article="activeArticle" />
+    <article-edit v-else-if="state.mode === 'new'" />
   </q-page>
 </template>
 
 <script>
 import { onMounted, ref } from 'vue'
 import ArticleList from '../components/ArticleList.vue'
-import ArticleDetail from '../components/ArticleDetail.vue'
+import ArticleView from '../components/ArticleView.vue'
+import ArticleEdit from '../components/ArticleEdit.vue'
 import useArticleHandler from '../composables/use-article-handler'
 import { fetchArticles } from '../api/PowerUpService'
 
 export default {
-  components: { ArticleDetail, ArticleList },
+  components: { ArticleList, ArticleView, ArticleEdit },
   setup() {
     const handler = useArticleHandler()
     const getArticles = async () => {
       const results = await fetchArticles()
       handler.load(results.data)
     }
+    let state = ref({
+      mode: 'list', // 'view' 'edit' 'new'
+    })
 
     onMounted(getArticles)
 
     return {
       handler,
+      state,
     }
   },
   computed: {
