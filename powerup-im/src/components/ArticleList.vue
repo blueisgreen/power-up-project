@@ -16,13 +16,13 @@
             By: {{ article.byline ? article.byline : 'anonymous' }}
           </q-item-label>
           <q-item-label v-if="article.publishedAt" caption>
-            Published on: {{ date.formatDate(new Date(), timestampFormat) }}
+            Published on {{ date.formatDate(article.publishedAt, timestampFormat) }}
           </q-item-label>
           <q-item-label v-else-if="article.updatedAt !== article.createdAt" caption>
-            Updated: {{ date.formatDate(article.updatedAt, timestampFormat) }}
+            Updated on {{ date.formatDate(article.updatedAt, timestampFormat) }}
           </q-item-label>
           <q-item-label caption>
-            Created: {{ date.formatDate(article.createdAt, timestampFormat) }}
+            Created on {{ date.formatDate(article.createdAt, timestampFormat) }}
           </q-item-label>
         </q-item-section>
       </q-item>
