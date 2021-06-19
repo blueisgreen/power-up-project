@@ -5,14 +5,12 @@ export async function fetchArticles() {
   return await api.get('/articles')
 }
 
+export async function createArticle(update) {
+  console.log('PowerUpService.createArticle', update)
+  return await api.post('/articles/', update)
+}
+
 export async function saveArticle(update) {
   console.log('PowerUpService.saveArticle', update)
-  let response
-  if (!update.id || update.id === '#new#') {
-    delete update.id
-    response = await api.post('/articles/', update)
-  } else {
-    response = await api.put(`/articles/${update.id}`, update)
-  }
-  return response
+  return await api.put(`/articles/${update.id}`, update)
 }

@@ -1,11 +1,7 @@
 <template>
   <div class="q-pa-md" style="max-width: 400px">
     <div class="row">
-      <q-btn color="secondary" icon="save" label="Save" @click="saveDraft" />
-      <q-btn color="red" icon="cancel" label="Cancel" @click="cancel" />
-    </div>
-    <div class="row">
-      <q-form class="q-gutter-md" @reset="onReset">
+      <q-form class="q-gutter-md">
         <q-input
           v-model="draft.headline"
           filled
@@ -23,47 +19,18 @@
         <q-editor v-model="draft.content" min-height="5rem" />
       </q-form>
     </div>
-    <div class="row">
-      <q-btn color="secondary" icon="save" label="Save" @click="saveDraft" />
-      <q-btn color="red" icon="cancel" label="Cancel" @click="cancel" />
-    </div>
   </div>
 </template>
 
 <script>
-import { reactive } from 'vue'
-import { saveArticle } from '../api/PowerUpService'
+import useArticleHandler from '../composables/use-article-handler'
 
 export default {
-  props: {
-    article: {
-      type: Object,
-      required: true,
-    },
-  },
-  emits: ['saveArticle', 'cancelEdit'],
-  setup(props, { emit }) {
-    const draft = reactive({ ...props.article })
-    let saveDraft = () => {
-      console.log('ArticleEdit.saveDraft', draft)
-      emit('saveArticle', { draft })
-    }
-    let cancel = () => {
-      console.log('ArticleEdit.cancel')
-      emit('cancelEdit')
-    }
-    console.log('draft', draft, 'original', props.article)
-
+  setup() {
+    const handler = useArticleHandler()
     return {
-      draft,
-      saveDraft,
-      cancel,
+      draft: handler.draft
     }
-  },
-  methods: {
-    onReset: function () {
-      console.log('You clicked the Reset button. And...?')
-    },
   },
 }
 </script>

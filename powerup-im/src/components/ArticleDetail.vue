@@ -22,7 +22,7 @@
         <article-view :article="activeArticle" />
       </div>
     </div>
-    <div v-if="state.edit">
+    <div v-if="state.edit || isNew">
       <article-edit
         :article="activeArticle"
         @save-article="handleSaveArticle"
@@ -41,6 +41,12 @@ import { saveArticle } from '../api/PowerUpService'
 
 export default {
   components: { ArticleView, ArticleEdit },
+  props: {
+    isNew: {
+      type: Boolean,
+      default: false
+    },
+  },
   setup() {
     const handler = useArticleHandler()
     let isEdit = false
