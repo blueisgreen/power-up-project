@@ -103,18 +103,22 @@ export default {
       this.openActiveForEdit()
     },
     async saveDraft() {
-      console.log('saveDraft')
       let resp
       if (this.state.mode === 'new') {
-        resp = await createArticle(this.draftArctile)
+        console.log('saving as new article', this.draftArticle)
+        resp = await createArticle(this.draftArticle)
         this.state.mode = 'edit'
       } else if (this.state.mode === 'edit') {
+        console.log('saving changes', this.draftArticle)
         resp = await saveArticle(this.draftArticle)
       } else {
         console.warn('Not sure why saveDraft was called. Ignoring.')
         return
       }
+      console.log('here is what came back', resp.data)
       this.handler.replaceOrAdd(resp.data)
+      this.handler.select(resp.data.id)
+      this.state.mode = 'edit'
     },
     cancelUnsavedEdits() {
       console.log('cancelUnsavedEdits')
