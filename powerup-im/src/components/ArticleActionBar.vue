@@ -8,11 +8,10 @@
       @click="() => emit('start-new-article')"
     />
     <q-btn
-      v-if="mode !== 'list'"
+      v-if="mode === 'view'"
       color="primary"
       icon="edit"
       label="Edit"
-      :disabled="mode !== 'view'"
       @click="() => emit('open-for-edit')"
     />
     <q-btn

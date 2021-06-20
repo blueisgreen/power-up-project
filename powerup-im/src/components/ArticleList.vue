@@ -27,34 +27,36 @@
           </q-item-label>
         </q-item-section>
         <q-item-section avatar>
-          <q-btn
+          <q-avatar
+            color="primary"
+            icon="edit"
+            label="Edit"
+            square
+            @click.stop="() => emit('open-for-edit', article)"
+          />
+        </q-item-section>
+        <q-item-section avatar>
+          <q-avatar
             v-if="!article.publishedAt"
             color="secondary"
             icon="publish"
             label="Publish"
+            square
             @click.stop="() => emit('publish-article', article)"
           />
-          <q-btn
+          <q-avatar
             v-if="article.publishedAt"
             color="secondary"
             icon="undo"
             label="Withdraw"
+            square
             @click.stop="() => emit('unpublish-article', article)"
-          />
-        </q-item-section>
-        <q-item-section avatar>
-          <q-btn
-            color="primary"
-            icon="edit"
-            label="Edit"
-            @click.stop="() => emit('open-for-edit', article)"
           />
         </q-item-section>
         <q-item-section avatar>
           <q-avatar
             color="warning"
             icon="archive"
-            text-color="white"
             square
             @click.stop="() => emit('archive-article', article)"
           />

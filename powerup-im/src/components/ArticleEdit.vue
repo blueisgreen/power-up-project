@@ -1,5 +1,5 @@
 <template>
-  <div class="q-pa-md" style="max-width: 400px">
+  <div class="q-pa-md">
     <div class="row">
       <q-form class="q-gutter-md">
         <q-input
@@ -37,7 +37,7 @@ export default {
 
 <style lang="scss" scoped>
 .my-card {
-  width: 75%;
+  width: 100%;
   max-height: 250px;
   overflow-y: scroll;
 }
