@@ -27,11 +27,26 @@
           </q-item-label>
         </q-item-section>
         <q-item-section avatar>
-          <q-avatar
+          <q-btn
+            v-if="!article.publishedAt"
+            color="secondary"
+            icon="publish"
+            label="Publish"
+            @click.stop="() => emit('publish-article', article)"
+          />
+        </q-item-section>
+        <q-item-section avatar>
+          <q-btn
+            color="primary"
+            icon="edit"
+            label="Edit"
+            @click.stop="() => emit('open-for-edit', article)"
+          />
+          <!-- <q-avatar
             icon="edit"
             color="primary"
             @click.stop="() => openArticleForEdit(article)"
-          />
+          /> -->
         </q-item-section>
       </q-item>
     </q-list>
@@ -53,7 +68,7 @@ export default {
       default: null,
     },
   },
-  emits: ['select-article', 'open-for-edit'],
+  emits: ['select-article', 'open-for-edit', 'publish-article'],
   setup(props, { emit }) {
     let selectArticle = (article) => {
       emit('select-article', article)
@@ -61,8 +76,12 @@ export default {
     let openArticleForEdit = (article) => {
       emit('open-for-edit', article)
     }
+    let publishArticle = (article) => {
+      emit('publish-article', article)
+    }
     return {
       date,
+      emit,
       timestampFormat: 'D-MMM-YYYY @ H:m:s',
       selectArticle,
       openArticleForEdit,
