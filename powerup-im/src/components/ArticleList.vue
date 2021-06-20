@@ -8,7 +8,7 @@
         ripple
         :active="article === selectedArticle"
         active-class="active-highlight"
-        @click="() => selectArticle(article)"
+        @click="() => emit('select-article', article)"
       >
         <q-item-section>
           <q-item-label>{{ article.headline }}</q-item-label>
@@ -33,6 +33,13 @@
             icon="publish"
             label="Publish"
             @click.stop="() => emit('publish-article', article)"
+          />
+          <q-btn
+            v-if="article.publishedAt"
+            color="secondary"
+            icon="undo"
+            label="Withdraw"
+            @click.stop="() => emit('unpublish-article', article)"
           />
         </q-item-section>
         <q-item-section avatar>
@@ -68,23 +75,12 @@ export default {
       default: null,
     },
   },
-  emits: ['select-article', 'open-for-edit', 'publish-article'],
+  emits: ['select-article', 'open-for-edit', 'publish-article', 'unpublish-article'],
   setup(props, { emit }) {
-    let selectArticle = (article) => {
-      emit('select-article', article)
-    }
-    let openArticleForEdit = (article) => {
-      emit('open-for-edit', article)
-    }
-    let publishArticle = (article) => {
-      emit('publish-article', article)
-    }
     return {
       date,
       emit,
       timestampFormat: 'D-MMM-YYYY @ H:m:s',
-      selectArticle,
-      openArticleForEdit,
     }
   },
 }
