@@ -49,11 +49,24 @@
             label="Edit"
             @click.stop="() => emit('open-for-edit', article)"
           />
-          <!-- <q-avatar
-            icon="edit"
-            color="primary"
-            @click.stop="() => openArticleForEdit(article)"
-          /> -->
+        </q-item-section>
+        <q-item-section avatar>
+          <q-avatar
+            color="warning"
+            icon="archive"
+            text-color="white"
+            square
+            @click.stop="() => emit('archive-article', article)"
+          />
+        </q-item-section>
+        <q-item-section avatar>
+          <q-avatar
+            color="red-10"
+            icon="delete_forever"
+            text-color="white"
+            square
+            @click.stop="() => emit('purge-article', article)"
+          />
         </q-item-section>
       </q-item>
     </q-list>
@@ -75,7 +88,14 @@ export default {
       default: null,
     },
   },
-  emits: ['select-article', 'open-for-edit', 'publish-article', 'unpublish-article'],
+  emits: [
+    'select-article',
+    'open-for-edit',
+    'publish-article',
+    'unpublish-article',
+    'archive-article',
+    'purge-article',
+  ],
   setup(props, { emit }) {
     return {
       date,

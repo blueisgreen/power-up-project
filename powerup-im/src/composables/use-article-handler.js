@@ -28,6 +28,12 @@ export const useArticleHandler = function () {
       articles.push(newArticle)
     }
   }
+  let remove = function (id) {
+    const ind = articles.findIndex((article) => article.id === id)
+    if (ind > -1) {
+      articles.splice(ind, 1)
+    }
+  }
   let select = function (id) {
     activeId.value = articles.find((article) => article.id === id) ? id : null
   }
@@ -58,6 +64,7 @@ export const useArticleHandler = function () {
     draft,
     load,
     replaceOrAdd,
+    remove,
     select,
     unselect,
     startNewDraft,
