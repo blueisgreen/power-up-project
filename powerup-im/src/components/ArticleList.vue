@@ -1,5 +1,5 @@
 <template>
-  <q-scroll-area style="height: 400px; max-width: 800px">
+  <q-scroll-area style="height: 600px; max-width: 800px">
     <q-list bordered separator>
       <q-item
         v-for="article in articles"
