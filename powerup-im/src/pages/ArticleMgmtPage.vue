@@ -22,6 +22,10 @@
       :selected-article="activeArticle"
       @select-article="select"
       @open-for-edit="openForEdit"
+      @publish-article="publish"
+      @unpublish-article="unpublish"
+      @archive-article="archive"
+      @purge-article="purge"
     />
     <article-view v-if="mode === 'view'" :article="activeArticle" />
     <article-edit v-if="mode === 'edit' || mode === 'new'" />
@@ -39,6 +43,10 @@ import {
   fetchArticles,
   createArticle,
   saveArticle,
+  publishArticle,
+  unpublishArticle,
+  archiveArticle,
+  purgeArticle,
 } from '../api/PowerUpService'
 
 export default {
@@ -102,7 +110,7 @@ export default {
       this.openActiveForEdit()
     },
     async saveDraft() {
-      console.log('saveDraft', this.draftArticle);
+      console.log('saveDraft', this.draftArticle)
       let resp
       if (this.state.mode === 'new') {
         resp = await createArticle(this.draftArticle)
@@ -125,6 +133,24 @@ export default {
       } else {
         this.state.mode = 'view'
       }
+    },
+    async publish(article) {
+      const resp = await publishArticle(article.id)
+      this.handler.replaceOrAdd(resp.data)
+    },
+    async unpublish(article) {
+      const resp = await unpublishArticle(article.id)
+      this.handler.replaceOrAdd(resp.data)
+    },
+    async archive(article) {
+      const resp = await archiveArticle(article.id)
+      this.handler.remove(article.id)
+      this.unselect()
+    },
+    async purge(article) {
+      const resp = await purgeArticle(article.id)
+      this.handler.remove(article.id)
+      this.unselect()
     },
   },
 }
